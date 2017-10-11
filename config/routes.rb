@@ -2,11 +2,9 @@ Rails.application.routes.draw do
   devise_for :admins
   get 'welcome/index'
 
-  resources :articles
+  resources :students, param: :student_id
   
-  resources :students do
-    resources :quiz_results
-  end
+  resources :articles
   
   resources :quiz_results
 
