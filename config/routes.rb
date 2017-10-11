@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :articles
+  
+  resources :students do
+    resources :quiz_results
+  end
+  
+  resources :quiz_results
 
   root 'articles#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
