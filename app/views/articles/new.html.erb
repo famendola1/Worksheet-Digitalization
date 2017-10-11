@@ -21,33 +21,42 @@ Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that
 </p>
 
 
+<!-- 
+ID tags for answers
+con = contributor
+col = collaborator
+com = communicator
+chal = challenger
+ -->
+
 <br>
-<%= form_with scope: :article, local: true do |form| %>
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
  	
   <p>
   	<%= form.label :q1_id, '1. During team meetings, I usually: ' %><br>
-  	<%= form.number_field :q1a1_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q1a1_id, :id => 'con', min: 1, max: 4 %> 
   		<%= form.label :q1a1_id, 'a. provide the team with technical data or information.' %><br>
-  	<%= form.number_field :q1a2_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q1a2_id, :id => 'col', min: 1, max: 4 %> 
   		<%= form.label :q1a2_id, 'b. keep the team focused on our mission or goal.' %><br>
-  	<%= form.number_field :q1a3_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q1a3_id, :id => 'com', min: 1, max: 4 %> 
   		<%= form.label :q1a3_id, 'c. make sure everyone is involved in the discussion.' %><br>
-  	<%= form.number_field :q1a4_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q1a4_id, :id => 'chal', min: 1, max: 4 %> 
   		<%= form.label :q1a4_id, 'd. raise questions about our goals or methods.' %><br>
   </p>
 
   <p>
   	<%= form.label :q2_id, '2. In relating to the team leader, I: ' %><br>
-  	<%= form.number_field :q2a1_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q2a1_id, :id => 'col', min: 1, max: 4 %> 
   		<%= form.label :q2a1_id, 'a. suggest that our work be goal directed.' %><br>
-  	<%= form.number_field :q2a2_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q2a2_id, :id => 'com', min: 1, max: 4 %> 
   		<%= form.label :q2a2_id, 'b. try to help him or her build a positive team climate.' %><br>
-  	<%= form.number_field :q2a3_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q2a3_id, :id => 'chal', min: 1, max: 4 %> 
   		<%= form.label :q2a3_id, 'c. am willing to disagree with him or her when necessary.' %><br>
-  	<%= form.number_field :q2a4_id, min: 1, max: 4 %> 
+  	<%= form.number_field :q2a4_id, :id => 'con', min: 1, max: 4 %> 
   		<%= form.label :q2a4_id, 'd. offer advice based upon my area of expertise.' %><br>
   </p>
 
+<!-- 
   <p>
     <%= form.label :q3_id, '3. Under stress, I sometimes: ' %><br>
     <%= form.number_field :q3a1_id, min: 1, max: 4 %> 
@@ -239,7 +248,7 @@ Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that
     <%= form.number_field :q18a4_id, min: 1, max: 4 %> 
       <%= form.label :q18a4_id, 'd. complete their team assignments on time. ' %><br>
   </p>
-
+ -->
   <p>
     <%= form.submit 'Done'%>
   </p>
