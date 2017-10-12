@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   devise_for :admins
   get 'welcome/index'
 
-  resources :students, param: :student_id # do 
-    # resources :quiz_results
-  # end
-  
-  scope 'students/:student_id' do
+  resources :students do 
     resources :quiz_results
   end
+  
+  # scope 'students/:student_id' do
+    # resources :quiz_results
+  # end
   
   resources :articles
   

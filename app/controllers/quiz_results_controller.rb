@@ -31,7 +31,7 @@ class QuizResultsController < ApplicationController
     
     respond_to do |format|
       if @quiz_result.save
-        format.html { redirect_to student_path(@student.student_id), notice: 'Quiz result was successfully created.' }
+        format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
         format.json { render :show, status: :created, location: @quiz_result }
       else
         format.html { render :new }
