@@ -64,7 +64,9 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.find_by(params[:id])
+      puts params[:id]
+      @student = Student.find_by(student_id: params[:id])
+      puts @student.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
