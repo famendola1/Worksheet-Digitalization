@@ -64,11 +64,11 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.find(params[:id])
+      @student = Student.find_by(student_id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.fetch(:student, {})
+      params.fetch(:student, {}).permit(:student_id)
     end
 end
