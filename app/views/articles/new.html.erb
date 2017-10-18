@@ -10,235 +10,723 @@ First, this is a questionnaire, and, therefore, there are no right or wrong resp
 <br>
 You will be asked to complete eighteen sentences. Each sentence has four possible endings. Please rank the endings in the order in which you feel each one applies to you. Place the number 4 next to the ending which is most applicable to you and continue down to a 1 next to the ending which is least applicable to you.
 <br>
-For example: 
-<br>As a team member, I am usually most concerned about:
-<br>_3__ a. meeting high ethical standards.
-<br>_4__ b. reaching our goals.
-<br>_2__ c. meeting my individual responsibilities.
-<br>_1__ d. how well we are working together as a group.
-<br>
+
 Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that some of the sentences will have two or more endings that apply to you or will have none that applies to you, but you should assume these are your only choices and rank them accordingly. Each set of endings must be ranked 4, 3, 2, and 1. 
 </p>
 
 
+<!-- 
+ID tags for answers
+con = contributor
+col = collaborator
+com = communicator
+chal = challenger
+ -->
+
 <br>
-<%= form_with scope: :article, local: true do |form| %>
- 	
-  <p>
-  	<%= form.label :q1_id, '1. During team meetings, I usually: ' %><br>
-  	<%= form.number_field :q1a1_id, min: 1, max: 4 %> 
-  		<%= form.label :q1a1_id, 'a. provide the team with technical data or information.' %><br>
-  	<%= form.number_field :q1a2_id, min: 1, max: 4 %> 
-  		<%= form.label :q1a2_id, 'b. keep the team focused on our mission or goal.' %><br>
-  	<%= form.number_field :q1a3_id, min: 1, max: 4 %> 
-  		<%= form.label :q1a3_id, 'c. make sure everyone is involved in the discussion.' %><br>
-  	<%= form.number_field :q1a4_id, min: 1, max: 4 %> 
-  		<%= form.label :q1a4_id, 'd. raise questions about our goals or methods.' %><br>
-  </p>
+<%= form_with scope: :article, url: articles_path, local: true do |form| %>
 
-  <p>
-  	<%= form.label :q2_id, '2. In relating to the team leader, I: ' %><br>
-  	<%= form.number_field :q2a1_id, min: 1, max: 4 %> 
-  		<%= form.label :q2a1_id, 'a. suggest that our work be goal directed.' %><br>
-  	<%= form.number_field :q2a2_id, min: 1, max: 4 %> 
-  		<%= form.label :q2a2_id, 'b. try to help him or her build a positive team climate.' %><br>
-  	<%= form.number_field :q2a3_id, min: 1, max: 4 %> 
-  		<%= form.label :q2a3_id, 'c. am willing to disagree with him or her when necessary.' %><br>
-  	<%= form.number_field :q2a4_id, min: 1, max: 4 %> 
-  		<%= form.label :q2a4_id, 'd. offer advice based upon my area of expertise.' %><br>
-  </p>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q1_id, '1. During team meetings, I usually ' %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q1a1_id, "a. provide the team with technical data or information.") %></td>
+    <td><%= radio_button_tag(:q1a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q1a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q1a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q1a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q1a2_id, "b. keep the team focused on our mission or goal") %></td>
+    <td><%= radio_button_tag(:q1a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q1a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q1a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q1a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q1a3_id, "c. make sure everyone is involved in the discussion") %></td>
+    <td><%= radio_button_tag(:q1a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q1a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q1a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q1a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q1a4_id, "d. raise questions about our goals or methods") %></td>
+    <td><%= radio_button_tag(:q1a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q1a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q1a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q1a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q3_id, '3. Under stress, I sometimes: ' %><br>
-    <%= form.number_field :q3a1_id, min: 1, max: 4 %> 
-      <%= form.label :q3a1_id, 'a. overuse humor and other tension-reducing devices.' %><br>
-    <%= form.number_field :q3a2_id, min: 1, max: 4 %> 
-      <%= form.label :q3a2_id, 'b. am too direct in communicating with other team members.' %><br>
-    <%= form.number_field :q3a3_id, min: 1, max: 4 %> 
-      <%= form.label :q3a3_id, 'c. lose patience with the need to get involved in discussions.' %><br>
-    <%= form.number_field :q3a4_id, min: 1, max: 4 %> 
-      <%= form.label :q3a4_id, 'd. complain to outsiders about problems facing the team.' %><br>
-  </p>
+</br>
 
-  <p>
-    <%= form.label :q4_id, '4. When conflicts arise on the team, I usually: ' %><br>
-    <%= form.number_field :q4a1_id, min: 1, max: 4 %> 
-      <%= form.label :q4a1_id, 'a. press for an honest discussion of the differences.' %><br>
-    <%= form.number_field :q4a2_id, min: 1, max: 4 %> 
-      <%= form.label :q4a2_id, 'b. provide reasons why one side or the other is correct.' %><br>
-    <%= form.number_field :q4a3_id, min: 1, max: 4 %> 
-      <%= form.label :q4a3_id, 'c. see the differences as a basis for a possible change in team direction.' %><br>
-    <%= form.number_field :q4a4_id, min: 1, max: 4 %> 
-      <%= form.label :q4a4_id, 'd. try to break the tension with a supportive or humorous remark.' %><br>
-  </p>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q2_id, '2. In relating to the team leader, I: ' %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q2a1_id, "a. suggest that our work be goal directed.") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q2a2_id, "b. try to help him or her build a positive team climate.") %></td>
+    <td><%= radio_button_tag(:q2a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q2a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q2a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q2a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q2a3_id, "c. am willing to disagree with him or her when necessary.") %></td>
+    <td><%= radio_button_tag(:q2a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q2a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q2a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q2a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q2a4_id, "d. offer advice based upon my area of expertise.'") %></td>
+    <td><%= radio_button_tag(:q2a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q2a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q2a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q2a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q5_id, '5. Other team members usually see me as: ' %><br>
-    <%= form.number_field :q5a1_id, min: 1, max: 4 %> 
-      <%= form.label :q5a1_id, 'a. factual.' %><br>
-    <%= form.number_field :q5a2_id, min: 1, max: 4 %> 
-      <%= form.label :q5a2_id, 'b. flexible.' %><br>
-    <%= form.number_field :q5a3_id, min: 1, max: 4 %> 
-      <%= form.label :q5a3_id, 'c. encouraging.' %><br>
-    <%= form.number_field :q5a4_id, min: 1, max: 4 %> 
-      <%= form.label :q5a4_id, 'd. candid.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q3_id, "3. Under stress, I sometimes: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q3a1_id, "a. overuse humor and other tension-reducing devices.") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q2a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q3a2_id, "b. am too direct in communicating with other team members.") %></td>
+    <td><%= radio_button_tag(:q3a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q3a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q3a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q3a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q3a3_id, "c. lose patience with the need to get involved in discussions.") %></td>
+    <td><%= radio_button_tag(:q3a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q3a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q3a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q3a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q3a4_id, "d. try to break the tension with a supportive or humorous remark.") %></td>
+    <td><%= radio_button_tag(:q3a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q3a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q3a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q3a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q6_id, '6. At times, I am: ' %><br>
-    <%= form.number_field :q6a1_id, min: 1, max: 4 %> 
-      <%= form.label :q6a1_id, 'a. too results oriented.' %><br>
-    <%= form.number_field :q6a2_id, min: 1, max: 4 %> 
-      <%= form.label :q6a2_id, 'b. too laid-back.' %><br>
-    <%= form.number_field :q6a3_id, min: 1, max: 4 %> 
-      <%= form.label :q6a3_id, 'c. self-righteous.' %><br>
-    <%= form.number_field :q6a4_id, min: 1, max: 4 %> 
-      <%= form.label :q6a4_id, 'd. shortsighted.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q4_id, "4. When conflicts arise on the team, I usually: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q4a1_id, "a. press for an honest discussion of the differences.") %></td>
+    <td><%= radio_button_tag(:q4a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q4a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q4a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q4a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q4a2_id, "b. provide reasons why one side or the other is correct.") %></td>
+    <td><%= radio_button_tag(:q4a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q4a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q4a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q4a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q4a3_id, "c. see the differences as a basis for a possible change in team direction.") %></td>
+    <td><%= radio_button_tag(:q4a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q4a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q4a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q4a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q4a4_id, "d. try to break the tension with a supportive or humorous remark.") %></td>
+    <td><%= radio_button_tag(:q4a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q4a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q4a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q4a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q7_id, '7. When things go wrong on the team, I usually: ' %><br>
-    <%= form.number_field :q7a1_id, min: 1, max: 4 %> 
-      <%= form.label :q7a1_id, 'a. push for increased emphasis on listening, feedback, and participation.' %><br>
-    <%= form.number_field :q7a2_id, min: 1, max: 4 %> 
-      <%= form.label :q7a2_id, 'b. press for a candid discussion of our problems.' %><br>
-    <%= form.number_field :q7a3_id, min: 1, max: 4 %> 
-      <%= form.label :q7a3_id, 'c. work hard to provide more and better information.' %><br>
-    <%= form.number_field :q7a4_id, min: 1, max: 4 %> 
-      <%= form.label :q7a4_id, 'd. suggest that we revisit out basic mission.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q5_id, "5. Other team members usually see me as: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q5a1_id, "a. factual") %></td>
+    <td><%= radio_button_tag(:q5a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q5a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q5a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q5a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q5a2_id, "b. flexible.") %></td>
+    <td><%= radio_button_tag(:q5a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q5a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q5a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q5a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q5a3_id, "c. encouraging.") %></td>
+    <td><%= radio_button_tag(:q5a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q5a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q5a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q5a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q5a4_id, "d. candid.") %></td>
+    <td><%= radio_button_tag(:q5a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q5a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q5a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q5a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q8_id, '8. A risky team contribution for me is to: ' %><br>
-    <%= form.number_field :q8a1_id, min: 1, max: 4 %> 
-      <%= form.label :q8a1_id, 'a. question some aspect of the team’s work.' %><br>
-    <%= form.number_field :q8a2_id, min: 1, max: 4 %> 
-      <%= form.label :q8a2_id, 'b. push the team to set higher performance standards.' %><br>
-    <%= form.number_field :q8a3_id, min: 1, max: 4 %> 
-      <%= form.label :q8a3_id, 'c. work outside my defined role or job area.' %><br>
-    <%= form.number_field :q8a4_id, min: 1, max: 4 %> 
-      <%= form.label :q8a4_id, 'd. provide other team members with feedback on their behavior as team members.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q6_id, "6. At times, I am: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q6a1_id, "a. too results oriented.") %></td>
+    <td><%= radio_button_tag(:q6a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q6a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q6a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q6a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q6a2_id, "b. too laid-back.") %></td>
+    <td><%= radio_button_tag(:q6a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q6a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q6a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q6a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q6a3_id, "c. self-righteous.") %></td>
+    <td><%= radio_button_tag(:q6a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q6a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q6a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q6a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q6a4_id, "d. shortsighted.") %></td>
+    <td><%= radio_button_tag(:q6a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q6a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q6a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q6a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q9_id, '9. Sometimes other team members see me as: ' %><br>
-    <%= form.number_field :q9a1_id, min: 1, max: 4 %> 
-      <%= form.label :q9a1_id, 'a. a perfectionist. ' %><br>
-    <%= form.number_field :q9a2_id, min: 1, max: 4 %> 
-      <%= form.label :q9a2_id, ' b. unwilling to reassess the team’s mission or goals. ' %><br>
-    <%= form.number_field :q9a3_id, min: 1, max: 4 %> 
-      <%= form.label :q9a3_id, 'c. not serious about getting the real job done. ' %><br>
-    <%= form.number_field :q9a4_id, min: 1, max: 4 %> 
-      <%= form.label :q9a4_id, ' d. a nitpicker.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q7_id, "7. When things go wrong on the team, I usually: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q7a1_id, "a. push for increased emphasis on listening, feedback, and participation.") %></td>
+    <td><%= radio_button_tag(:q7a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q7a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q7a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q7a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q7a2_id, "b. press for a candid discussion of our problems.") %></td>
+    <td><%= radio_button_tag(:q7a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q7a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q7a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q7a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q7a3_id, "c. work hard to provide more and better information..") %></td>
+    <td><%= radio_button_tag(:q7a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q7a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q7a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q7a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q7a4_id, "d. suggest that we revisit out basic mission.") %></td>
+    <td><%= radio_button_tag(:q7a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q7a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q7a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q7a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q10_id, '10. I believe team problem solving requires: ' %><br>
-    <%= form.number_field :q10a1_id, min: 1, max: 4 %> 
-      <%= form.label :q10a1_id, 'a. cooperation by all team members. ' %><br>
-    <%= form.number_field :q10a2_id, min: 1, max: 4 %> 
-      <%= form.label :q10a2_id, ' b. high-level listening skills.' %><br>
-    <%= form.number_field :q10a3_id, min: 1, max: 4 %> 
-      <%= form.label :q10a3_id, 'c. a willingness to ask tough questions.' %><br>
-    <%= form.number_field :q10a4_id, min: 1, max: 4 %> 
-      <%= form.label :q10a4_id, ' d. good solid data.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q8_id, "8. A risky team contribution for me is to:  " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q8a1_id, "a. question some aspect of the team’s work.") %></td>
+    <td><%= radio_button_tag(:q8a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q8a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q8a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q8a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q8a2_id, "b. push the team to set higher performance standards.") %></td>
+    <td><%= radio_button_tag(:q8a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q8a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q8a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q8a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q8a3_id, "c. work outside my defined role or job area.") %></td>
+    <td><%= radio_button_tag(:q8a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q8a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q8a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q8a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q8a4_id, "d. provide other team members with feedback on their behavior as team members.") %></td>
+    <td><%= radio_button_tag(:q8a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q8a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q8a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q8a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q11_id, '11. When a new team is forming, I usually: ' %><br>
-    <%= form.number_field :q11a1_id, min: 1, max: 4 %> 
-      <%= form.label :q11a1_id, 'a. try to meet and get to know other team members.' %><br>
-    <%= form.number_field :q11a2_id, min: 1, max: 4 %> 
-      <%= form.label :q11a2_id, 'b. ask pointed questions about our goals and methods. ' %><br>
-    <%= form.number_field :q11a3_id, min: 1, max: 4 %> 
-      <%= form.label :q11a3_id, 'c. want to know what is expected of me. ' %><br>
-    <%= form.number_field :q11a4_id, min: 1, max: 4 %> 
-      <%= form.label :q11a4_id, 'd. seek clarity about our basic mission.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"> <%= form.label :q9_id, "9. Sometimes other team members see me as:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q9a1_id, "a. a perfectionist.") %></td>
+    <td><%= radio_button_tag(:q9a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q9a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q9a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q9a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q9a2_id, "b. unwilling to reassess the team’s mission or goals.") %></td>
+    <td><%= radio_button_tag(:q9a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q9a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q9a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q9a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q9a3_id, "c. not serious about getting the real job done.") %></td>
+    <td><%= radio_button_tag(:q9a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q9a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q9a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q9a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q9a4_id, "d. a nitpicker.") %></td>
+    <td><%= radio_button_tag(:q9a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q9a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q9a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q9a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q12_id, '12. At times, I make other people feel: ' %><br>
-    <%= form.number_field :q12a1_id, min: 1, max: 4 %> 
-      <%= form.label :q12a1_id, 'a. dishonest because they are not able to be as confrontational as I am.' %><br>
-    <%= form.number_field :q12a2_id, min: 1, max: 4 %> 
-      <%= form.label :q12a2_id, 'b. guilty because they don’t live up to my standards. ' %><br>
-    <%= form.number_field :q12a3_id, min: 1, max: 4 %> 
-      <%= form.label :q12a3_id, 'c. small-minded because they don’t think long-range. ' %><br>
-    <%= form.number_field :q12a4_id, min: 1, max: 4 %> 
-      <%= form.label :q12a4_id, 'd. heartless because they don’t care about how people relate to each other.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q10_id, "10. I believe team problem solving requires:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q10a1_id, "a. cooperation by all team members.") %></td>
+    <td><%= radio_button_tag(:q10a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q10a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q10a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q10a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q10a2_id, "b. high-level listening skills.") %></td>
+    <td><%= radio_button_tag(:q10a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q10a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q10a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q10a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q10a3_id, "c. a willingness to ask tough questions.") %></td>
+    <td><%= radio_button_tag(:q10a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q10a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q10a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q10a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q10a4_id, "d. good solid data..") %></td>
+    <td><%= radio_button_tag(:q10a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q10a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q10a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q10a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q13_id, '13. I believe the role of the team leader is to: ' %><br>
-    <%= form.number_field :q13a1_id, min: 1, max: 4 %> 
-      <%= form.label :q13a1_id, 'a. ensure the efficient solution of business problems. ' %><br>
-    <%= form.number_field :q13a2_id, min: 1, max: 4 %> 
-      <%= form.label :q13a2_id, ' b. help the team establish long-range goals and short-term objectives. ' %><br>
-    <%= form.number_field :q13a3_id, min: 1, max: 4 %> 
-      <%= form.label :q13a3_id, 'c. create a participatory decision-making climate. ' %><br>
-    <%= form.number_field :q13a4_id, min: 1, max: 4 %> 
-      <%= form.label :q13a4_id, ' d. bring out diverse ideas and challenge assumptions. ' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q11_id, "11. When a new team is forming, I usually: '" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q11a1_id, "a. try to meet and get to know other team members.") %></td>
+    <td><%= radio_button_tag(:q11a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q11a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q11a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q11a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q11a2_id, "b. ask pointed questions about our goals and methods.") %></td>
+    <td><%= radio_button_tag(:q11a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q11a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q11a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q11a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q11a3_id, "c. want to know what is expected of me. ") %></td>
+    <td><%= radio_button_tag(:q11a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q11a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q11a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q11a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q11a4_id, "d. seek clarity about our basic mission.'") %></td>
+    <td><%= radio_button_tag(:q11a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q11a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q11a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q11a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q14_id, '14. I believe team decisions should be based on: ' %><br>
-    <%= form.number_field :q14a1_id, min: 1, max: 4 %> 
-      <%= form.label :q14a1_id, 'a. the team’s mission and goals. ' %><br>
-    <%= form.number_field :q14a2_id, min: 1, max: 4 %> 
-      <%= form.label :q14a2_id, 'b. a consensus of team members.' %><br>
-    <%= form.number_field :q14a3_id, min: 1, max: 4 %> 
-      <%= form.label :q14a3_id, 'c. an open and candid assessment of the issues. ' %><br>
-    <%= form.number_field :q14a4_id, min: 1, max: 4 %> 
-      <%= form.label :q14a4_id, 'd. the weight of the evidence. ' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q12_id, "12. At times, I make other people feel:  '" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q12a1_id, "a. dishonest because they are not able to be as confrontational as I am.") %></td>
+    <td><%= radio_button_tag(:q12a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q12a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q12a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q12a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q12a2_id, "b. guilty because they don’t live up to my standards.") %></td>
+    <td><%= radio_button_tag(:q12a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q12a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q12a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q12a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q12a3_id, "c. small-minded because they don’t think long-range. ") %></td>
+    <td><%= radio_button_tag(:q12a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q12a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q12a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q12a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q12a4_id, "d. heartless because they don’t care about how people relate to each other.") %></td>
+    <td><%= radio_button_tag(:q12a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q12a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q12a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q12a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q15_id, '15. Sometimes I:' %><br>
-    <%= form.number_field :q15a1_id, min: 1, max: 4 %> 
-      <%= form.label :q15a1_id, 'a. see team climate as an end in itself. ' %><br>
-    <%= form.number_field :q15a2_id, min: 1, max: 4 %> 
-      <%= form.label :q15a2_id, ' b. play the devil’s advocate far too long. ' %><br>
-    <%= form.number_field :q15a3_id, min: 1, max: 4 %> 
-      <%= form.label :q15a3_id, 'c. fail to see the importance of effective team process. ' %><br>
-    <%= form.number_field :q15a4_id, min: 1, max: 4 %> 
-      <%= form.label :q15a4_id, 'd. overemphasize strategic issues and minimize short-term task accomplishments.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th><%= form.label :q13_id, "13. I believe the role of the team leader is to:  '" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q13a1_id, "a. ensure the efficient solution of business problems.") %></td>
+    <td><%= radio_button_tag(:q13a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q13a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q13a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q13a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q13a2_id, "b. help the team establish long-range goals and short-term objectives.") %></td>
+    <td><%= radio_button_tag(:q13a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q13a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q13a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q13a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q13a3_id, "c. create a participatory decision-making climate. ") %></td>
+    <td><%= radio_button_tag(:q13a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q13a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q13a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q13a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q13a4_id, "d. bring out diverse ideas and challenge assumptions.") %></td>
+    <td><%= radio_button_tag(:q13a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q13a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q13a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q13a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q16_id, '16. People have often described me as: ' %><br>
-    <%= form.number_field :q16a1_id, min: 1, max: 4 %> 
-      <%= form.label :q16a1_id, 'a. independent. ' %><br>
-    <%= form.number_field :q16a2_id, min: 1, max: 4 %> 
-      <%= form.label :q16a2_id, ' b. dependable. ' %><br>
-    <%= form.number_field :q16a3_id, min: 1, max: 4 %> 
-      <%= form.label :q16a3_id, 'c. imaginative. ' %><br>
-    <%= form.number_field :q16a4_id, min: 1, max: 4 %> 
-      <%= form.label :q16a4_id, 'd. participative.' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q14_id, "14. I believe team decisions should be based on: " %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q14a1_id, "a. the team’s mission and goals.") %></td>
+    <td><%= radio_button_tag(:q14a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q14a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q14a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q14a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q14a2_id, "b. a consensus of team members.") %></td>
+    <td><%= radio_button_tag(:q14a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q14a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q14a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q14a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q14a3_id, "c. an open and candid assessment of the issues.  ") %></td>
+    <td><%= radio_button_tag(:q14a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q14a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q14a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q14a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q14a4_id, "d. the weight of the evidence.") %></td>
+    <td><%= radio_button_tag(:q14a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q14a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q14a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q14a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q17_id, '17. Most of the time, I am: ' %><br>
-    <%= form.number_field :q17a1_id, min: 1, max: 4 %> 
-      <%= form.label :q17a1_id, 'a. responsible and hardworking. ' %><br>
-    <%= form.number_field :q17a2_id, min: 1, max: 4 %> 
-      <%= form.label :q17a2_id, 'b. committed and flexible. ' %><br>
-    <%= form.number_field :q17a3_id, min: 1, max: 4 %> 
-      <%= form.label :q17a3_id, 'c. enthusiastic and humorous. ' %><br>
-    <%= form.number_field :q17a4_id, min: 1, max: 4 %> 
-      <%= form.label :q17a4_id, 'd. honest and authentic. ' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q15_id, "15. Sometimes I:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q15a1_id, "a. see team climate as an end in itself.") %></td>
+    <td><%= radio_button_tag(:q15a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q15a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q15a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q15a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q15a2_id, "b. play the devil’s advocate far too long.") %></td>
+    <td><%= radio_button_tag(:q15a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q15a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q15a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q15a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q15a3_id, "c. fail to see the importance of effective team process.  ") %></td>
+    <td><%= radio_button_tag(:q15a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q15a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q15a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q15a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q15a4_id, "d. overemphasize strategic issues and minimize short-term task accomplishments.") %></td>
+    <td><%= radio_button_tag(:q15a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q15a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q15a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q15a4_id, "4") %></td>
+</tr>
+</table>
 
-  <p>
-    <%= form.label :q18_id, '18. In relating to other team members, at times I get annoyed because they don’t: ' %><br>
-    <%= form.number_field :q18a1_id, min: 1, max: 4 %> 
-      <%= form.label :q18a1_id, 'a. revisit team goals or check progress.' %><br>
-    <%= form.number_field :q18a2_id, min: 1, max: 4 %> 
-      <%= form.label :q18a2_id, 'b. see the importance of working well together.' %><br>
-    <%= form.number_field :q18a3_id, min: 1, max: 4 %> 
-      <%= form.label :q18a3_id, 'c. object to team action with which they disagree.' %><br>
-    <%= form.number_field :q18a4_id, min: 1, max: 4 %> 
-      <%= form.label :q18a4_id, 'd. complete their team assignments on time. ' %><br>
-  </p>
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q16_id, "16. People have often described me as:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q16a1_id, "a. independent.") %></td>
+    <td><%= radio_button_tag(:q16a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q16a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q16a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q16a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q16a2_id, "b. dependable.") %></td>
+    <td><%= radio_button_tag(:q16a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q16a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q16a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q16a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q16a3_id, "c. imaginative.  ") %></td>
+    <td><%= radio_button_tag(:q16a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q16a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q16a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q16a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q16a4_id, "d. participative.") %></td>
+    <td><%= radio_button_tag(:q16a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q16a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q16a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q16a4_id, "4") %></td>
+</tr>
+</table>
+
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q17_id, "17. Most of the time, I am:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q17a1_id, "a. responsible and hardworking.") %></td>
+    <td><%= radio_button_tag(:q17a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q17a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q17a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q17a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q17a2_id, "b. committed and flexible.") %></td>
+    <td><%= radio_button_tag(:q17a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q17a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q17a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q17a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q17a3_id, "c. enthusiastic and humorous.  ") %></td>
+    <td><%= radio_button_tag(:q17a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q17a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q17a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q17a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q17a4_id, "d. honest and authentic.") %></td>
+    <td><%= radio_button_tag(:q17a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q17a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q17a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q17a4_id, "4") %></td>
+</tr>
+</table>
+
+</br>
+<table>
+<tr>
+    <th id = "question"><%= form.label :q18_id, "18. In relating to other team members, at times I get annoyed because they don’t:" %></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+</tr>
+<tr>
+    <td><%= label_tag(:q18a1_id, "a. revisit team goals or check progress.'") %></td>
+    <td><%= radio_button_tag(:q18a1_id, "1") %></td>
+    <td><%= radio_button_tag(:q18a1_id, "2") %></td>
+    <td><%= radio_button_tag(:q18a1_id, "3") %></td>
+    <td><%= radio_button_tag(:q18a1_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q18a2_id, "b. see the importance of working well together.") %></td>
+    <td><%= radio_button_tag(:q18a2_id, "1") %></td>
+    <td><%= radio_button_tag(:q18a2_id, "2") %></td>
+    <td><%= radio_button_tag(:q18a2_id, "3") %></td>
+    <td><%= radio_button_tag(:q18a2_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q18a3_id, "c. object to team action with which they disagree.  ") %></td>
+    <td><%= radio_button_tag(:q18a3_id, "1") %></td>
+    <td><%= radio_button_tag(:q18a3_id, "2") %></td>
+    <td><%= radio_button_tag(:q18a3_id, "3") %></td>
+    <td><%= radio_button_tag(:q18a3_id, "4") %></td>
+</tr>
+<tr>
+    <td><%= label_tag(:q18a4_id, "d. complete their team assignments on time. ") %></td>
+    <td><%= radio_button_tag(:q18a4_id, "1") %></td>
+    <td><%= radio_button_tag(:q18a4_id, "2") %></td>
+    <td><%= radio_button_tag(:q18a4_id, "3") %></td>
+    <td><%= radio_button_tag(:q18a4_id, "4") %></td>
+</tr>
+</table>
 
   <p>
     <%= form.submit 'Done'%>
