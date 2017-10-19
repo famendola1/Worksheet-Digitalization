@@ -4,8 +4,11 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.integer :answer_id
       t.references :quiz_result
       t.integer :question
-      t.integer :response, :array => true
-      t.integer :category, :array => true
+      t.integer :responseA
+      t.integer :responseB
+      t.integer :responseC
+      t.integer :responseD
+      # t.integer :category
 
       t.timestamps
     end

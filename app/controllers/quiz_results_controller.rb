@@ -28,6 +28,11 @@ class QuizResultsController < ApplicationController
     @quiz_result = @student.quiz_results.build
     @quiz_result.student_id = @student.student_id
     
+    (1..18).each do |q|
+      answer_params = {"question" => q, "quiz_result_id" => @quiz_result.id, "responseA" => params["q#{q}a1_id"], "responseB" => params["q#{q}a2_id"], "responseC" => params["q#{q}a3_id"], "responseD" => params["q#{q}a4_id"]}
+      @answer = @quiz_result.answers.build(answer_params)
+    end
+    
     respond_to do |format|
       if @quiz_result.save
         format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
