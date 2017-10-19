@@ -10,6 +10,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @quiz_results = QuizResult.where("student_id = ?", @student.student_id).order("created_at DESC")
   end
 
   # GET /students/new

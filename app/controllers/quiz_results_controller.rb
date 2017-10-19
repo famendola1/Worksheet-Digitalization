@@ -25,8 +25,8 @@ class QuizResultsController < ApplicationController
   # POST /quiz_results.json
   def create
     @student = Student.find_by(student_id: params[:student_id])
-    @quiz_result = @student.quiz_results.build(quiz_result_params)
-    @quiz_result.save!
+    @quiz_result = @student.quiz_results.build
+    @quiz_result.student_id = @student.student_id
     
     respond_to do |format|
       if @quiz_result.save
@@ -71,6 +71,6 @@ class QuizResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_result_params
-      params.fetch(:quiz_result, {}).permit(:reflection, :student_id)
+      params.fetch(:quiz_result, {}).permit(:reflection)
     end
 end
