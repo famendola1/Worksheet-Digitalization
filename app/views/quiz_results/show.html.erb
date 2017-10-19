@@ -15,7 +15,8 @@
 
   <div class="field">
     <%= form.label :reflection %>
-    <%= form.text_area :reflection, result_id: @quiz_result.result_id %>
+    <br>
+    <%= form.text_area :reflection, result_id: @quiz_result.result_id, rows: "50", cols: "120" %>
   </div>
 
   <div class="actions">
@@ -23,5 +24,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_student_quiz_result_path(@quiz_result) %> |
 <%= link_to 'Back', student_path(@quiz_result.student) %>
