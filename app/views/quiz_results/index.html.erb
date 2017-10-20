@@ -12,9 +12,9 @@
   <tbody>
     <% @quiz_results.each do |quiz_result| %>
       <tr>
-        <td><%= link_to 'Show', quiz_result %></td>
-        <td><%= link_to 'Edit', edit_quiz_result_path(quiz_result) %></td>
-        <td><%= link_to 'Destroy', quiz_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', student_quiz_result_path(quiz_result, student_id: quiz_result.student_id) %></td>
+        <td><%= link_to 'Edit', edit_student_quiz_result_path(quiz_result, student_id: quiz_result.student_id) %></td>
+        <td><%= link_to 'Destroy', student_quiz_result_path(quiz_result, student_id: quiz_result.student_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Quiz Result', new_quiz_result_path %>
+<%= link_to 'New Quiz Result', new_student_quiz_result_path %>

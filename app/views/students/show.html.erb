@@ -2,7 +2,8 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
-<%= link_to 'New Quiz Result', new_quiz_result_path(@quiz_result, :id => @student.id) %>
-<% @student.quiz_results.order("created_at DESC").each do |r| %>
+<%= link_to 'New Quiz Result', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id) %>
+<%= @student.student_id %>
+<% @quiz_results.each do |r| %>
   <p> <%= r.created_at %> </p>
 <% end %>

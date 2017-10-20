@@ -4,7 +4,7 @@ class QuizResultsController < ApplicationController
   # GET /quiz_results
   # GET /quiz_results.json
   def index
-    @quiz_results = QuizResult.all
+    @quiz_results = QuizResult.where("student_id = ?", params[:student_id]).order("created_at DESC")
   end
 
   # GET /quiz_results/1
@@ -24,14 +24,13 @@ class QuizResultsController < ApplicationController
   # POST /quiz_results
   # POST /quiz_results.json
   def create
-    @student = Student.find(params[:id])
-    @quiz_result = @student.quiz_results.build(quiz_result_params)
-    @quiz_result.student_id = @student.id
-    @quiz_result.save!
+    @student = Student.find_by(student_id: params[:student_id])
+    @quiz_result = @student.quiz_results.build
+    @quiz_result.student_id = @student.student_id
     
     respond_to do |format|
       if @quiz_result.save
-        format.html { redirect_to @quiz_result, notice: 'Quiz result was successfully created.' }
+        format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
         format.json { render :show, status: :created, location: @quiz_result }
       else
         format.html { render :new }
