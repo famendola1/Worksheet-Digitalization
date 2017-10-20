@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
+  root 'welcome#index'
   get 'welcome/index'
 
   # Routing for students and quiz result requests
@@ -9,11 +10,6 @@ Rails.application.routes.draw do
   
   resources :quiz_results
 
-  root 'articles#new'
-
-  resources :articles
-  
-  root 'welcome#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
