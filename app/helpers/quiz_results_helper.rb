@@ -1,6 +1,6 @@
 module QuizResultsHelper
     def calculate_score(quiz_result)
-        category = ["Collaborator","Contributer","Challenger","Communicator"]
+        category = ["Contributer","Collaborator","Communicator","Challenger"]
         counts = { "Collaborator" => 0, "Contributer" => 0, "Challenger" => 0, "Communicator" => 0 }
         
         offset = 0

@@ -40,8 +40,8 @@ class QuizResultsController < ApplicationController
         category = calculate_score(@quiz_result)
         if @student.category != category
           @student.category = category
+          @student.save!
         end
-        @student.save!
         format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
         format.json { render :show, status: :created, location: @quiz_result }
       else
