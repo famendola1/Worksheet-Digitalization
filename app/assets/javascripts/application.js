@@ -12,3 +12,16 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
+
+// Javascript for button validation
+$(document).ready(function() {
+  $("input[type=radio]").click(function() {
+     el = $(this);
+     col = el.val();
+     $("input[value=" + col + "]").prop("checked", false);
+     el.prop("checked", true);
+  })
+});
