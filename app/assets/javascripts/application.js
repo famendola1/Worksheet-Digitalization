@@ -17,6 +17,7 @@
 
 
 $(document).ready(function() {
+
 	// Javascript for button validation
   $("input[type=radio]").click(function() {
     el = $(this);
@@ -55,5 +56,34 @@ $(document).ready(function() {
 	$("#cha_val").val(totalCha)
 
   })
+
+
+  // Javascript for submit button validation
+	$( "input[type=submit]" ).click(function() {
+		var question = validate_form();
+		if( question == 0 ) {
+		 	return;
+		 }
+		else {
+			alert("Please finish question " + question + " before submitting!");
+			event.preventDefault();
+		}
+	})
+
+	// Iterates through all answers and checks that they are ranked 
+	// Returns 0 if all are checked, otherwise returns first question that isn't finished
+	function validate_form() {
+		var check;
+		for (i = 1; i < 19; i++) {
+			for (j = 1; j < 5; j++) {
+				check = 0;
+				name = "q" + i + "a" + j;
+				if ($("input[name='" + name + "']:checked").length == 0) {
+					return i;
+				}
+			}
+		}
+		return 0;
+	}
 
 });
