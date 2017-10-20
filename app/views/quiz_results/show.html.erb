@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <%= form_with(url: {action: 'update', controller: "quiz_results", student_id: @quiz_result.student.student_id, result_id: @quiz_result.result_id}, model: @quiz_result, local: true) do |form| %>
   <% if @quiz_result.errors.any? %>
     <div id="error_explanation">
@@ -25,3 +26,4 @@
 <% end %>
 
 <%= link_to 'Back', student_path(@quiz_result.student) %>
+
