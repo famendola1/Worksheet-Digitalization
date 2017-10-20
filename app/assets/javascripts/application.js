@@ -19,7 +19,8 @@
 $(document).ready(function() {
 
 	// Javascript for button validation
-  $("input[type=radio]").click(function() {
+  $(document).on('click', 'input[type=radio]', function() {
+  	console.log("hereee");
     el = $(this);
     col = el.data("col");
     
@@ -32,7 +33,7 @@ $(document).ready(function() {
 
 
 // Javascript for result calculation
-  $("input[type=radio]").click(function() {
+  $(document).on('click', 'input[type=radio]', function() {
     var totalCon = 0, totalCol = 0, totalCom = 0, totalCha = 0; 
 
 	$("input[data-prop='con']:checked").each(function() {
@@ -59,7 +60,7 @@ $(document).ready(function() {
 
 
   // Javascript for submit button validation
-	$( "input[type=submit]" ).click(function() {
+  $(document).on('click', '#quizSubmit', function() {
 		var question = validate_form();
 		if( question == 0 ) {
 		 	return;
