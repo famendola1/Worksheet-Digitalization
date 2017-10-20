@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def new 
+		@acticle =Article.new
 	end
 
 	def create
