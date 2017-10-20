@@ -2,8 +2,11 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
-<%= link_to 'New Quiz Result', new_student_quiz_result_path(student_id: @student.student_id) %>
-<%= @student.category %>
-<% @quiz_results.each do |r| %>
-  <p> <%= r.created_at %> </p>
+<%= link_to 'New Quiz Result', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id) %>
+<%= @student.student_id %>
+<% @student.quiz_results.order("created_at DESC").each do |r| %>
+  <hr>
+  <p> <b>Created at: </b> <%= r.created_at %> </p>
+  <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
+  <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
 <% end %>

@@ -33,10 +33,8 @@ ActiveRecord::Schema.define(version: 20171010233952) do
     t.integer "answer_id"
     t.integer "quiz_result_id"
     t.integer "question"
-    t.integer "responseA"
-    t.integer "responseB"
-    t.integer "responseC"
-    t.integer "responseD"
+    t.integer "response"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quiz_result_id"], name: "index_answers_on_quiz_result_id"

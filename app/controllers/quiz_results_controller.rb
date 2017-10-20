@@ -56,7 +56,7 @@ class QuizResultsController < ApplicationController
   def update
     respond_to do |format|
       if @quiz_result.update(quiz_result_params)
-        format.html { redirect_to @quiz_result, notice: 'Quiz result was successfully updated.' }
+        format.html { redirect_to @quiz_result.student, notice: 'Quiz result was successfully updated.' }
         format.json { render :show, status: :ok, location: @quiz_result }
       else
         format.html { render :edit }
