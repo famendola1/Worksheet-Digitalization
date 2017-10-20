@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 
   // Javascript for submit button validation
-  $(document).on('click', 'input[type=submit]', function() {
+  $(document).on('click', '#quizSubmit', function() {
 		var question = validate_form();
 		if( question == 0 ) {
 		 	return;
