@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root 'admins#show'
   end
   
-  root 'welcome#index'
+  root 'students#index'
   
   # Routing for students and quiz result requests
   resources :students do 
