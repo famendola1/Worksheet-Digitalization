@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /admins
   # GET /admins.json
@@ -10,6 +11,7 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @admin = current_admin
   end
 
   # GET /admins/new

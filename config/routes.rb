@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins
   
   authenticated :admin do
-    root 'welcome#index'
+    root 'admins#show'
   end
   
   root 'welcome#index'
