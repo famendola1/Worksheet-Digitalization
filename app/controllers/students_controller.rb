@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   # GET /students
   # GET /students.json
@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    @student = Student.find_by(student_id: params[:student][:id])
+    # @student = Student.find_by(student_id: params[:student][:id])
     @quiz_results = QuizResult.where("student_id = ?", @student.student_id).order("created_at DESC")
   end
 

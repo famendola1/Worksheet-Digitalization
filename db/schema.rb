@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(version: 20171023175933) do
     t.integer "result_id"
     t.integer "student_id"
     t.string "reflection"
+    t.integer "collaborator"
+    t.integer "challenger"
+    t.integer "communicator"
+    t.integer "contributor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_quiz_results_on_student_id"
