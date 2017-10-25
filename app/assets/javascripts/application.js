@@ -61,12 +61,21 @@ $(document).ready(function() {
 
   // Javascript for submit button validation
   $(document).on('click', '#quizSubmit', function() {
-		var question = validate_form();
-		if( question == 0 ) {
+		var questions = validate_form();
+		if( questions.size == 0 ) {
 		 	return;
 		 }
 		else {
-			alert("Please finish question " + question + " before submitting!");
+			questionString = "";
+			questions.forEach(function(value) {
+			  questionString = questionString + ", " + value;
+			});
+			if (questions.size == 1) {
+				alert("Please finish question" + questionString.substring(1) + " before submitting!");
+
+			} else {
+				alert("Please finish questions" + questionString.substring(1) + " before submitting!");
+			}
 			event.preventDefault();
 		}
 	})
@@ -74,17 +83,16 @@ $(document).ready(function() {
 	// Iterates through all answers and checks that they are ranked 
 	// Returns 0 if all are checked, otherwise returns first question that isn't finished
 	function validate_form() {
-		var check;
+		var numbers = new Set();
 		for (i = 1; i < 19; i++) {
 			for (j = 1; j < 5; j++) {
-				check = 0;
 				name = "q" + i + "a" + j;
 				if ($("input[name='" + name + "']:checked").length == 0) {
-					return i;
+					numbers.add(i);
 				}
 			}
 		}
-		return 0;
+		return numbers;
 	}
 
 });
