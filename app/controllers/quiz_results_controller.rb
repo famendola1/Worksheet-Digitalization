@@ -26,7 +26,6 @@ class QuizResultsController < ApplicationController
   # POST /quiz_results.json
   def create
     @student = Student.find_by(student_id: params[:student_id])
-    puts @student.student_id
     @quiz_result = @student.quiz_results.build
     @quiz_result.student_id = @student.student_id
     

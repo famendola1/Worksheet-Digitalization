@@ -4,7 +4,9 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if params[:student]
+      redirect_to student_path(params[:student][:id])
+    end
   end
 
   # GET /students/1
