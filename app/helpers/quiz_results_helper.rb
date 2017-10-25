@@ -11,7 +11,7 @@ module QuizResultsHelper
             counts[category[(3 + offset) % 4]] += a.responseD
             offset += 1
         end
-        counts.key(counts.values.max)
+        counts
     end
     
 end

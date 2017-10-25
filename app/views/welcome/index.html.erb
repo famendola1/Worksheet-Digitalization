@@ -1,2 +1,15 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<% if admin_signed_in? %>
+    <li>
+    <%= link_to "Hi, #{current_admin.name}" %>
+    </li>
+    <li>
+    <%= link_to "Logout", destroy_admin_session_path, method: :delete	  %>
+    </li>
+<% else %>
+    <li>
+    <%= link_to "Signin", new_admin_session_path %>
+    </li>
+    <li>
+    <%= link_to "Signup", new_admin_registration_path %>
+    </li>
+<% end %>
