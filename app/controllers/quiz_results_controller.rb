@@ -33,12 +33,18 @@ class QuizResultsController < ApplicationController
     (1..18).each do |q|
       answer_params = {"question" => q, "quiz_result_id" => @quiz_result.id, "responseA" => params["q#{q}a1"], "responseB" => params["q#{q}a2"], "responseC" => params["q#{q}a3"], "responseD" => params["q#{q}a4"]}
       @answer = @quiz_result.answers.build(answer_params)
+      @answer.save
     end
-
+    
+    categories = calculate_score(@quiz_result)
+    @quiz_result.collaborator = categories["Collaborator"]
+    @quiz_result.communicator = categories["Communicator"]
+    @quiz_result.challenger = categories["Challenger"]
+    @quiz_result.contributor = categories["Contributer"]
     
     respond_to do |format|
       if @quiz_result.save
-        category = calculate_score(@quiz_result)
+        category = categories.key(categories.values.max)
         if @student.category != category
           @student.category = category
           @student.save!

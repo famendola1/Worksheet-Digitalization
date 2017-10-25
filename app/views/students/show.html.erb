@@ -2,11 +2,20 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
-<%= link_to 'New Quiz Result', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id) %>
-<%= @student.category %>
+<br>
+<p> Category: <%= @student.category %> </p>
+<% if not current_admin %> 
+  <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
+<% end %>
+
 <% @quiz_results.each do |r| %>
   <hr>
-  <p> <b>Created at: </b> <%= r.created_at %> </p>
+  <p> <b>Contributor:</b> <%= r.contributor %></p>
+  <p> <b>Collaborator:</b> <%= r.collaborator %></p>
+  <p> <b>Communicator:</b> <%= r.communicator %></p>
+  <p> <b>Challenger:</b> <%= r.challenger %></p>
   <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
-  <p> <%= link_to "Edit Reflection", controller: "quiz_results", action: "update",  student_id: @student.student_id, id: r, student: r.student %> </p>
+  <% if not current_admin %>
+    <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
+  <% end %>
 <% end %>
