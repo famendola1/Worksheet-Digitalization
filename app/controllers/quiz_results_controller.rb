@@ -28,7 +28,6 @@ class QuizResultsController < ApplicationController
     @student = Student.find_by(student_id: params[:student_id])
     @quiz_result = @student.quiz_results.build
     @quiz_result.student_id = @student.student_id
-    @quiz_result.student = @student
     
     (1..18).each do |q|
       answer_params = {"question" => q, "quiz_result_id" => @quiz_result.id, "responseA" => params["q#{q}a1"], "responseB" => params["q#{q}a2"], "responseC" => params["q#{q}a3"], "responseD" => params["q#{q}a4"]}
@@ -63,7 +62,7 @@ class QuizResultsController < ApplicationController
   def update
     respond_to do |format|
       if @quiz_result.update(quiz_result_params)
-        format.html { redirect_to @quiz_result.student_id, notice: 'Quiz result was successfully updated.' }
+        format.html { redirect_to @quiz_result.student, notice: 'Quiz result was successfully updated.' }
         format.json { render :show, status: :ok, location: send(@quiz_result) }
       else
         format.html { render :update }
