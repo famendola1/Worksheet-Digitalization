@@ -1,5 +1,6 @@
 class QuizResultsController < ApplicationController
   before_action :set_quiz_result, only: [:show, :edit, :update, :destroy]
+  include QuizResultsHelper
 
   # GET /quiz_results
   # GET /quiz_results.json
@@ -28,8 +29,19 @@ class QuizResultsController < ApplicationController
     @quiz_result = @student.quiz_results.build
     @quiz_result.student_id = @student.student_id
     
+    (1..18).each do |q|
+      answer_params = {"question" => q, "quiz_result_id" => @quiz_result.id, "responseA" => params["q#{q}a1"], "responseB" => params["q#{q}a2"], "responseC" => params["q#{q}a3"], "responseD" => params["q#{q}a4"]}
+      @answer = @quiz_result.answers.build(answer_params)
+    end
+
+    
     respond_to do |format|
       if @quiz_result.save
+        category = calculate_score(@quiz_result)
+        if @student.category != category
+          @student.category = category
+          @student.save!
+        end
         format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
         format.json { render :show, status: :created, location: @quiz_result }
       else
