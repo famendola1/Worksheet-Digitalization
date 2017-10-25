@@ -12,7 +12,7 @@ You will be asked to complete eighteen sentences. Each sentence has four possibl
 Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that some of the sentences will have two or more endings that apply to you or will have none that applies to you, but you should assume these are your only choices and rank them accordingly. Each set of endings must be ranked 4, 3, 2, and 1. 
 </p>
 
-<%= form_with(url: student_quiz_results_path, model: quiz_result, local: true) do |form| %>
+<%= form_with(url: student_quiz_results_path, model: quiz_result, student: @quiz_result.student, local: true) do |form| %>
   <% if quiz_result.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(quiz_result.errors.count, "error") %> prohibited this quiz_result from being saved:</h2>

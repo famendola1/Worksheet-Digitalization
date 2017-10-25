@@ -8,5 +8,5 @@
   <hr>
   <p> <b>Created at: </b> <%= r.created_at %> </p>
   <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
-  <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
+  <p> <%= link_to "Edit Reflection", controller: "quiz_results", action: "update",  student_id: @student.student_id, id: r, student: r.student %> </p>
 <% end %>
