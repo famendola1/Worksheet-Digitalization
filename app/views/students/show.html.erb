@@ -8,7 +8,7 @@
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
 <% end %>
 
-<% @quiz_results.each do |r| %>
+<% @student.quiz_results.each do |r| %>
   <hr>
   <p> <b>Contributor:</b> <%= r.contributor %></p>
   <p> <b>Collaborator:</b> <%= r.collaborator %></p>

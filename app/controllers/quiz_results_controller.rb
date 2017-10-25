@@ -63,9 +63,9 @@ class QuizResultsController < ApplicationController
     respond_to do |format|
       if @quiz_result.update(quiz_result_params)
         format.html { redirect_to @quiz_result.student, notice: 'Quiz result was successfully updated.' }
-        format.json { render :show, status: :ok, location: @quiz_result }
+        format.json { render :show, status: :ok, location: send(@quiz_result) }
       else
-        format.html { render :edit }
+        format.html { render :update }
         format.json { render json: @quiz_result.errors, status: :unprocessable_entity }
       end
     end

@@ -77,8 +77,7 @@ ActiveRecord::Schema.define(version: 20171023175933) do
     t.index ["student_id"], name: "index_quiz_results_on_student_id"
   end
 
-  create_table "students", force: :cascade do |t|
-    t.integer "student_id"
+  create_table "students", primary_key: "student_id", force: :cascade do |t|
     t.string "name"
     t.string "category"
     t.datetime "created_at", null: false
