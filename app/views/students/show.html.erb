@@ -1,21 +1,42 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
-<br>
-<p> Category: <%= @student.category %> </p>
 <% if not current_admin %> 
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
 <% end %>
+<br>
 
 <% @quiz_results.each do |r| %>
-  <hr>
-  <p> <b>Contributor:</b> <%= r.contributor %></p>
-  <p> <b>Collaborator:</b> <%= r.collaborator %></p>
-  <p> <b>Communicator:</b> <%= r.communicator %></p>
-  <p> <b>Challenger:</b> <%= r.challenger %></p>
-  <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
-  <% if not current_admin %>
-    <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
+  <div class="table-responsive" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Contributor</th>
+          <th>Collaborator</th>
+          <th>Communicator</th>
+          <th>Challenger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= r.contributor %></td>
+          <td><%= r.collaborator %></td>
+          <td><%= r.communicator %></td>
+          <td><%= r.challenger %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p> <b>Category:</b> <%= @student.category %> </p>
+  <% if r.reflection %>
+    <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
+    <% if not current_admin %>
+      <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %> </p>
+    <% end %>
+  <% else %>
+    <% if not current_admin %>
+      <%= link_to "Add Reflection", edit_student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
+    <% else %>
+      <p><b>No Reflection</b></p>
+    <% end %>
   <% end %>
+  <%= link_to "View Results", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
 <% end %>
