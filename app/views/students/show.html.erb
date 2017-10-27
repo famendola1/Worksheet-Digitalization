@@ -4,7 +4,7 @@
 <% end %>
 <br>
 
-<% @quiz_results.each do |r| %>
+<% @student.quiz_results.order("created_at DESC").each do |r| %>
   <div class="table-responsive" >
     <table class="table">
       <thead>
@@ -25,7 +25,7 @@
       </tbody>
     </table>
   </div>
-  <p> <b>Category:</b> <%= @student.category %> </p>
+  <p> <b>Category:</b> <%= get_category(r) %> </p>
   <% if r.reflection %>
     <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
     <% if not current_admin %>
