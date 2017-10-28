@@ -4,7 +4,6 @@
 <% end %>
 <br>
 
-<<<<<<< HEAD
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
   <div class="table-responsive" >
     <table class="table">
@@ -40,16 +39,4 @@
     <% end %>
   <% end %>
   <%= link_to "View Results", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
-=======
-<% @student.quiz_results.each do |r| %>
-  <hr>
-  <p> <b>Contributor:</b> <%= r.contributor %></p>
-  <p> <b>Collaborator:</b> <%= r.collaborator %></p>
-  <p> <b>Communicator:</b> <%= r.communicator %></p>
-  <p> <b>Challenger:</b> <%= r.challenger %></p>
-  <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
-  <% if not current_admin %>
-    <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
-  <% end %>
->>>>>>> master
 <% end %>
