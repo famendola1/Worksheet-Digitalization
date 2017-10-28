@@ -21,7 +21,6 @@ $(document).ready(function() {
 
 	// Javascript for button validation
   $(document).on('click', 'input[type=radio]', function() {
-  	console.log("hereee");
     el = $(this);
     col = el.data("col");
     
