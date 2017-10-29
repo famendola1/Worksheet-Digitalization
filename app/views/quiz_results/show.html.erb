@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
+<h1> Student id:
+<%= @quiz_result.student_id %> </h1>
+<% offset = 0 %>
+<% questions = ["1. During team meetings, I usually", "2. In relating to the team leader, I:", "3. Under stress, I sometimes:", "4. When conflicts arise on the team, I usually:", "5. Other team members usually see me as:", "6. At times, I am:", "7. When things go wrong on the team, I usually:", "8. A risky team contribution for me is to:", "9. Sometimes other team members see me as:", "10. I believe team problem solving requires:", "11. When a new team is forming, I usually:", "12. At times, I make other people feel:", "13. I believe the role of the team leader is to:", "14. I believe team decisions should be based on:", "15. Sometimes I:", "16. People have often described me as:", "17. Most of the time, I am:", "18. In relating to other team members, at times I get annoyed because they don’t:"] %>
+<table class = "table">
+<tr>
+  <th> Question </th>
+  <th> Contributor </th>
+
+  <th> Collaborator </th>
+
+  <th> Communicator </th>
+  <th> Challenger </th>
+</tr>
 
 
-<%= form_for @quiz_result, url: {:action => "update"}, student_id: @quiz_result.student_id, result_id: @quiz_result.result_id do |form| %>
-  <% if @quiz_result.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.quiz_result.errors.count, "error") %> prohibited this quiz_result from being saved:</h2>
+<% @quiz_result.answers.each do |answer|%>
+    <% category = [answer.responseA, answer.responseB, answer.responseC, answer.responseD] %>
+    <tr>
+    <td> <%= questions[offset] %> </td>
 
-      <ul>
-      <% @student.quiz_result.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :reflection %>
-    <br>
-    <%= form.text_area :reflection, result_id: @quiz_result.result_id, rows: "50", cols: "120" %>
-  </div>
+    <td><%= category[(0 + offset) % 4] %></td>
+    <td><%= category[(1 + offset) % 4] %></td>
+    <td><%= category[(2 + offset) % 4] %></td>
+    <td><%= category[(3 + offset) % 4] %></td>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <% offset += 1 %>
+  
 
+<%end %>
+
+</table>
 <%= link_to 'Back', student_path(@quiz_result.student_id) %>
 

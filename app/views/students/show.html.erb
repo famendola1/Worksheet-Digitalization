@@ -16,6 +16,8 @@
   <p> <b>Challenger:</b> <%= r.challenger %></p>
   <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
   <% if not current_admin %>
-    <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
+    <p> <%= link_to "Edit Reflection", edit_student_quiz_result_path(r, student_id: @student.student_id) %> </p>
+
+    <p> <%= link_to "Show detailed quiz results", student_quiz_result_path(r, student_id: @student.student_id) %> </p>
   <% end %>
 <% end %>
