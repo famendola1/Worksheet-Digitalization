@@ -5,6 +5,8 @@ class CreateCourses < ActiveRecord::Migration[5.1]
       t.references :admin
       t.string :name
       t.string :semester
+      t.integer :section
+      t.integer :year
 
       t.timestamps
     end

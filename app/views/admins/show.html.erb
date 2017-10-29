@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_admin_password_path(@admin) %> |
-<%= link_to 'Back', admin_session_path %>
+<%= link_to 'Edit', edit_admin_password_path(@admin) %> 
 
 <h1>Courses</h1>
 
@@ -15,7 +14,7 @@
   <tbody>
     <% @admin.courses.each do |course| %>
       <tr>
-        <td><%= link_to 'Show', admin_course_path(course, admin_id: @admin.id) %></td>
+        <td><%= link_to course.name + ' - Section ' + course.section.to_s, admin_course_path(course, admin_id: @admin.id) %></td>
       </tr>
     <% end %>
   </tbody>
