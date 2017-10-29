@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
-
-<%= form_for(:student, url: students_path, method: :get) do |f| %>
-  <div class="form-group">
-          <%= f.label :id %>
-          <%= f.text_field :id %>
-  </div>
-  <div><%= f.submit "Go", class: "btn btn-primary" %></div>
-<% end %>
+<center>
+  <h3>Enter student id to view quiz results</h3>
+  <%= form_for(:student, url: students_path, method: :get) do |f| %>
+    <div class="form-group">
+      <%= f.number_field :id %>
+    </div>
+    <div><%= f.submit "Go", class: "btn btn-primary" %></div>
+  <% end %>
+</center>
