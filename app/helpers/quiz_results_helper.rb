@@ -13,5 +13,5 @@ module QuizResultsHelper
         end
         counts
     end
-    
+        
 end

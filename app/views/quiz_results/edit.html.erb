@@ -1,6 +1,29 @@
-<h1>Editing Quiz Result</h1>
+<p id="notice"><%= notice %></p>
 
-<%= render 'form', quiz_result: @quiz_result %>
 
-<%= link_to 'Show', student_quiz_result_path %> |
-<%= link_to 'Back', student_path %>
+<%= form_for @quiz_result, url: {:action => "update"}, student_id: @quiz_result.student_id, result_id: @quiz_result.result_id do |form| %>
+  <% if @quiz_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.quiz_result.errors.count, "error") %> prohibited this quiz_result from being saved:</h2>
+
+      <ul>
+      <% @student.quiz_result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reflection %>
+    <br>
+    <%= form.text_area :reflection, result_id: @quiz_result.result_id, rows: "50", cols: "120" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', student_path(@quiz_result.student_id) %>
+

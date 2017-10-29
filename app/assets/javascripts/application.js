@@ -95,4 +95,26 @@ $(document).ready(function() {
 		return numbers;
 	}
 
+	$(document).on('click', 'input[type=radio]', function() {
+	    document.addEventListener("keydown", function (e) {
+		  if ([37].indexOf(e.keyCode) > -1) { // left
+
+		    e.preventDefault();
+		    window.scrollBy(-50, -0);
+		  }
+		  if ([38].indexOf(e.keyCode) > -1) { //up 
+		    e.preventDefault();
+		    window.scrollBy(0, -50);
+		  }
+		  if ([39].indexOf(e.keyCode) > -1) { //right
+		    e.preventDefault();
+		    window.scrollBy(50, 0);
+		  }
+		  if([40].indexOf(e.keyCode) > -1) { //down
+		    e.preventDefault();
+		    window.scrollBy(0, 50);
+		  }
+		}, false);
+  })
+
 });
