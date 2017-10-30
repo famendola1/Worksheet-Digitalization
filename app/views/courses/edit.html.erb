@@ -2,5 +2,5 @@
 
 <%= render 'form', course: @course %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Show', admin_course_path(@course, @course.admin.id) %> |
+<%= link_to 'Back', admin_session_path %>
