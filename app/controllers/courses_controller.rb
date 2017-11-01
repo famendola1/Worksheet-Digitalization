@@ -11,6 +11,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    # @students = @course.students
+    @students = Student.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @students.to_csv, filename: "#{@course.name}-#{@course.section}-#{@course.semester}.csv" }
+    end
   end
 
   # GET /courses/new
