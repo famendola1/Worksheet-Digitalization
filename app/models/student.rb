@@ -1,15 +1,25 @@
 class Student < ApplicationRecord
   has_and_belongs_to_many :courses
   has_many :quiz_results
+  include StudentsHelper
   
   def self.to_csv
-   # attributes = %w{student_id name quiz_id question responseA responseB responseC responseD}
-    CSV.generate(headers: false) do |csv|
-      # csv << attributes
+    # build attributes
+    attributes = %w{student_id name quiz_id category}
+    (1..18).each do |n|
+      attributes << "q#{n}a"
+      attributes << "q#{n}b"
+      attributes << "q#{n}c"
+      attributes << "q#{n}d"
+    end
+    
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
       all.each do |s|
         student = [s.id, s.name]
         s.quiz_results.each do |q|
           student << q.id
+          student << s.get_category(q)
           q.answers.order("question ASC").each do |a|
             student << a.responseA
             student << a.responseB
