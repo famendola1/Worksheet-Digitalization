@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'students#index'
   
   # Routing for students and quiz result requests
-  resources :students, except: [:index] do 
+  resources :students do 
     resources :quiz_results, except: [:index]
   end
   
