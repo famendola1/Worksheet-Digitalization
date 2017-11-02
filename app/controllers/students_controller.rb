@@ -18,6 +18,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    @course = Course.all
   end
 
   # GET /students/1/edit
@@ -27,7 +28,10 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    #@student = Student.new(student_params)
+    @course = Course.find_by(params[:id])
+
+    @student = @course.students.build(student_params)
 
     respond_to do |format|
       if @student.save
@@ -45,7 +49,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to admin_courses_path, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }

@@ -10,4 +10,18 @@
 
 <h1>Students</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <th>Print students here</th>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'Add Student', new_student_path(@student, course_id: @course.id), class: 'btn btn-primary' %>
