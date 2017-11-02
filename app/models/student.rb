@@ -5,7 +5,7 @@ class Student < ApplicationRecord
   
   def self.to_csv
     # build attributes
-    attributes = %w{student_id name quiz_id quiz_timestamp category}
+    attributes = %w{student_id name category quiz_id quiz_timestamp quiz_category}
     (1..18).each do |n|
       attributes << "q#{n}a"
       attributes << "q#{n}b"
@@ -16,16 +16,11 @@ class Student < ApplicationRecord
     CSV.generate(headers: true) do |csv|
       csv << attributes
       all.each do |s|
-        student = [s.id, s.name]
+        student = [s.id, s.name, s.category]
         s.quiz_results.each do |q|
-          student << q.id
-          student << q.created_at
-          student << s.get_category(q)
+          student.concat [q.id, q.created_at, s.get_category(q)]
           q.answers.order("question ASC").each do |a|
-            student << a.responseA
-            student << a.responseB
-            student << a.responseC
-            student << a.responseD
+            student.concat [a.responseA, a.responseB, a.responseC, a.responseD]
           end
           csv << student
         end
