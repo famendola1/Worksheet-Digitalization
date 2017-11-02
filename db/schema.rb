@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20171023175933) do
     t.integer "admin_id"
     t.string "name"
     t.string "semester"
+    t.integer "section"
+    t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_courses_on_admin_id"
