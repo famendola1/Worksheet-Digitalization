@@ -19,6 +19,11 @@
 
   <tbody>
     <th>Print students here</th>
+    <% @course.students.each do |student| %>
+      <tr>
+        <td><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
