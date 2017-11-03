@@ -7,7 +7,7 @@ class Student < ApplicationRecord
     # build attributes
     attributes = %w{student_id name category quiz_id quiz_timestamp quiz_category contributor collaborator communicator challenger }
     (1..18).each do |n|
-      attributes << ["q#{n}a", "q#{n}b", "q#{n}c", "q#{n}d"]
+      attributes.concat ["q#{n}a", "q#{n}b", "q#{n}c", "q#{n}d"]
     end
     
     # generate csv file
