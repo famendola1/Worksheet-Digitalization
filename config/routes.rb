@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   
   # Routing for students and quiz result requests
   resources :students do 
-    resources :quiz_results
+    resources :quiz_results, except: [:index]
   end
   
-  resources :admins do
-    resources :courses
+  resources :admins, only: [:show] do
+    resources :courses, except: [:index]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

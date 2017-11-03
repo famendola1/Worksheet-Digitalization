@@ -12,9 +12,9 @@
   </thead>
 
   <tbody>
-    <% @admin.courses.each do |course| %>
+    <% current_admin.courses.each do |course| %>
       <tr>
-        <td><%= link_to course.name + ' - Section ' + course.section.to_s + ' - ' + course.semester + ' ' + course.year.to_s, admin_course_path(course, admin_id: @admin.id) %></td>
+        <td><%= link_to course.name + ' - Section ' + course.section.to_s, admin_course_path(course, admin_id: current_admin.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <hr>
 
-<%= link_to 'New Course', new_admin_course_path(@course, admin_id: @admin.id), class: 'btn btn-primary' %>
+<%= link_to 'New Course', new_admin_course_path(@course, admin_id: current_admin.id), class: 'btn btn-primary' %>
