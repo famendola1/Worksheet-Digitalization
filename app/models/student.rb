@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  require 'csv'
   has_and_belongs_to_many :courses
   has_many :quiz_results
   include StudentsHelper
@@ -30,6 +31,13 @@ class Student < ApplicationRecord
           csv << student
         end
       end
+    end
+  end
+  
+  def self.import(file)
+    CSV.foreach(file.path, headers: false) do |row|
+      student_id, name = row
+      Student.create(student_id: student_id, name: name)
     end
   end
 end

@@ -12,5 +12,8 @@
 
 
 <%= link_to "Export", admin_course_path(@course, admin_id: @course.admin.id, format: "csv"), class: "btn btn-info" %>
-
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
 
