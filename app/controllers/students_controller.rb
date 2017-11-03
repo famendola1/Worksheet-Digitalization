@@ -30,7 +30,9 @@ class StudentsController < ApplicationController
   def create
     #@student = Student.new(student_params)
     @course = Course.find_by(params[:id])
-    @student = @course.students.build(student_params)
+    @student = Student.new(student_params)
+    
+    #@courses_students.student = Student.find(params[student_params])
 
     respond_to do |format|
       if @student.save

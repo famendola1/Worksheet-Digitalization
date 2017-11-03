@@ -19,11 +19,7 @@
 
   <tbody>
     <th>Print students here</th>
-    <% @course.students.each do |student| %>
-      <tr>
-        <td><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
-      </tr>
-    <% end %>
+    <% CoursesStudents.where(:course_id => @course_id) %>
   </tbody>
 </table>
 
