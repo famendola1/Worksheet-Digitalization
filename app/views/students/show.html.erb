@@ -12,6 +12,9 @@
 <h4> Quiz Results </h4>
 <hr>
 
+<% if not @student.quiz_results.exists?(@quiz_result)%>
+<h1> No Quiz Results Available</h1>
+<%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
   <div class="table-responsive" >
     <table class="table">

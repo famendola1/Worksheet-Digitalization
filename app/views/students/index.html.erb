@@ -1,11 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+  
 <center>
+<h4> <%= flash[:error] %> </h4>
   <h3>Enter student id to view quiz results</h3>
+
   <%= form_for(:student, url: students_path, method: :get) do |f| %>
+
+
     <div class="form-group">
-      <%= f.number_field :id %>
+      <%= f.number_field :id, min: 0 %>
     </div>
     <div><%= f.submit "Go", class: "btn btn-primary" %></div>
   <% end %>
 </center>
+
+<style>
+
+h4 {
+    color: red
+} 
+</style>
