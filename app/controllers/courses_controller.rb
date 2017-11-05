@@ -2,15 +2,15 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
 
-  # GET /courses
-  # GET /courses.json
-  def index
-    @courses = Course.all
-  end
-
   # GET /courses/1
   # GET /courses/1.json
   def show
+    # @students = @course.students
+    @students = Student.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @students.to_csv, filename: "#{@course.name}-#{@course.section}-#{@course.semester}.csv" }
+    end
   end
 
   # GET /courses/new

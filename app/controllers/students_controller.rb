@@ -66,6 +66,11 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    Student.import(params[:file])
+    redirect_to root_url
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
