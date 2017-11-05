@@ -1,7 +1,11 @@
 class Student < ApplicationRecord
-  require 'csv'
-  has_and_belongs_to_many :courses
+
+  has_many :enrollments
+  has_many :courses, through: :enrollments
   has_many :quiz_results
+  validates :student_id, uniqueness: { scope: :student_id}
+
+  require 'csv'
   include StudentsHelper
   
   def self.to_csv

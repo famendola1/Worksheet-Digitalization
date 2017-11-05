@@ -60,10 +60,13 @@ ActiveRecord::Schema.define(version: 20171023175933) do
     t.index ["admin_id"], name: "index_courses_on_admin_id"
   end
 
-  create_table "courses_students", id: false, force: :cascade do |t|
-    t.integer "course_id", null: false
-    t.integer "student_id", null: false
-    t.index ["course_id", "student_id"], name: "index_courses_students_on_course_id_and_student_id"
+  create_table "enrollments", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "quiz_results", force: :cascade do |t|
