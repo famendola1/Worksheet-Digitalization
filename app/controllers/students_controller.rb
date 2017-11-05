@@ -18,7 +18,6 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-    @course = Course.all
   end
 
   # GET /students/1/edit
@@ -28,8 +27,8 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @course = Course.find_by(params[:id])
-    @student    = Student.create( student_params ) 
+    @course = Course.find(params[:course_id])
+    @student = Student.create( student_params ) 
     @course.enrollments.create( :student_id => @student.student_id )
 
     respond_to do |format|
