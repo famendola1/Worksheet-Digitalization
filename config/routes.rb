@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   root 'students#index'
   
   # Routing for students and quiz result requests
-  resources :students do
+  resources :students, except: [:new, :create] do
     collection {post :import}
     resources :quiz_results, except: [:index]
   end
   
   resources :admins, only: [:show] do
-    resources :courses, except: [:index]
+    resources :courses, except: [:index] do
+      resources :students, only: [:new, :create]
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
