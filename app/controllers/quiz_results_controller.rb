@@ -2,12 +2,6 @@ class QuizResultsController < ApplicationController
   before_action :set_quiz_result, only: [:show, :edit, :update, :destroy]
   include QuizResultsHelper
 
-  # GET /quiz_results
-  # GET /quiz_results.json
-  def index
-    @quiz_results = QuizResult.where("student_id = ?", params[:student_id]).order("created_at DESC")
-  end
-
   # GET /quiz_results/1
   # GET /quiz_results/1.json
   def show

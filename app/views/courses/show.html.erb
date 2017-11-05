@@ -10,4 +10,28 @@
 
 <h1>Students</h1>
 
+<table>
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.students.each do |student| %>
+      <tr>
+        <td><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<%= link_to 'Add Student', new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id), class: 'btn btn-primary' %>
+<%= link_to "Export", admin_course_path(@course, admin_id: @course.admin.id, format: "csv"), class: "btn btn-info" %>
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
 

@@ -29,3 +29,73 @@ Next, run the following commands:
 * ```rake assets:precompile```, precomiles javascript, stylesheets, etc.
 
 Now, to use the app, run ```rails server``` and navigate to localhost:3000 in your browser of choice.
+
+## Architecture
+
+### Admin Simplified
+
+|  type   |  attribute |
+|---------|------------|
+| Integer | id         |
+| String  | email      |
+| String  | name       |
+
+We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handle the admin data. The admin data is collected through a form on the sign up page. The data is then stored in the database with columns that are predefined by devise. We added a name column to the database since it wasn't predefined by devise. An admin has many courses
+
+### Course
+
+| type    |  attribute |
+|---------|------------|
+| Integer | id         |
+| String  | name       |
+| String  | semester   |
+| Integer | admin_id   |
+
+The id is the key attribute for a course and it makes each course unique. The course name and semester are for visual purposes. It allows the admin to view course names instead of an id, and the semester helps distinguish courses with the same name offered in different semesters. The admin_id is a way to relate the course to a specific admin. A course belongs to an admin and has many and belongs to many students.
+
+### Student
+
+| type    |  attribute |
+|---------|------------|
+| Integer | student_id |
+| String  | name       |
+| String  | category   |
+
+The purpose of the student id is to make each student unique and should correspond to the student’s school id number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique id. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at id’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many and belongs to many a courses and has many quiz results.
+
+### Course Student Join Table
+
+| type    |  attribute |
+|---------|------------|
+| Integer | course_id  |
+| Integer | student_id |
+
+This table represents the has_to_and_belongs_to_many relationship that exists between courses and students. This relationship allows for courses to have multiple students and for students to be enrolled in multiple courses. In order to have this relationship we need to store all the references to relative foreign keys, which is what this join table is used for.
+
+### Quiz Result
+
+| type    |  attribute   |
+|---------|--------------|
+| Integer | id           |
+| Integer | student_id   |
+| Integer | collaborator |
+| Integer | contributor  |
+| Integer | challenger   |
+| Integer | communicator |
+| String  | reflection   |
+
+The id uniquely identifies each quiz result from one another. Collaborator, challenger, communicator, and contributor store the calculated points for each of those categories from the quiz. The student_id is stored so that each quiz_result also knows about and is linked to the student it belongs to. Reflection holds the student's written repsonse to their quiz results. We chose to not make reflection its own model because it is just a form response and has no attributes. A quiz result belongs to a student andwill have 18 answer objects corresponding to how the quiz was answered.
+
+### Answer
+
+| type    |  attribute     |
+|---------|----------------|
+| Integer | id             |
+| Integer | quiz_result_id |
+| Integer | question       |
+| Integer | responseA      |
+| Integer | responseB      |
+| Integer | responseC      |
+| Integer | responseD      |
+
+The id is the unique identifier of the each answer. The question is which question the answer corresponds to. responseA, responseB, responseC, and responseD correspond to the ranking each of the respones got from completing the quiz. Lastly, it has a quiz_result_id so it can be related to the unique quiz it belongs to.

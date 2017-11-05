@@ -40,11 +40,13 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    @course = Course.find(params[:course_id])
+    @student = Student.create( student_params ) 
+    @course.enrollments.create( :student_id => @student.student_id )
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
@@ -76,6 +78,11 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def import
+    Student.import(params[:file])
+    redirect_to root_url
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -85,6 +92,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.fetch(:student, {}).permit(:student_id)
+      params.fetch(:student, {}).permit(:student_id, :name)
     end
 end
