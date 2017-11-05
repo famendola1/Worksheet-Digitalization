@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 <% if not current_admin %> 
+  <h4> Hello, <%= @student.name %> </h4>
+  <br>
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
+<% else %>
+  <h4> Student: <%= @student.name %> </h4>
 <% end %>
+
 <br>
+<br>
+<h4> Quiz Results </h4>
+<hr>
 
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
   <div class="table-responsive" >
@@ -29,7 +37,7 @@
   <% if r.reflection %>
     <p> <b>Reflection: </b> <%= simple_format(r.reflection) %> </p>
     <% if not current_admin %>
-      <p> <%= link_to "Edit Reflection", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %> </p>
+      <p> <%= link_to "Edit Reflection", edit_student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %> </p>
     <% end %>
   <% else %>
     <% if not current_admin %>

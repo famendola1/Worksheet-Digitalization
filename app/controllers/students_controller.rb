@@ -28,11 +28,9 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    #@student = Student.new(student_params)
     @course = Course.find_by(params[:id])
-    @student = Student.new(student_params)
-    
-    #@courses_students.student = Student.find(params[student_params])
+    @student    = Student.create( student_params ) 
+    @course.enrollments.create( :student_id => @student.student_id )
 
     respond_to do |format|
       if @student.save
@@ -77,6 +75,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.fetch(:student, {}).permit(:student_id)
+      params.fetch(:student, {}).permit(:student_id, :name)
     end
 end
