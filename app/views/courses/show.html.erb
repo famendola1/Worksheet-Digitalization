@@ -21,8 +21,6 @@
     <% @course.students.each do |student| %>
       <tr>
         <td><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
-        <td><%= student.quiz_results.order("created_at DESC").first %> </td>
-        <td> <%= student.category %></td>
       </tr>
     <% end %>
   </tbody>
