@@ -25,7 +25,7 @@ $(document).ready(function() {
     col = el.data("col");
     
     el
-      .parents(".question")
+      .parents(".table")
       .find("input[data-col=" + col + "]")
       .prop("checked", false);
     el.prop("checked", true);

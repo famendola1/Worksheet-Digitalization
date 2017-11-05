@@ -1,18 +1,31 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:edit, :update, :destroy]
   include StudentsHelper
   
   # GET /students
   # GET /students.json
   def index
-    if params[:student]
-      redirect_to student_path(params[:student][:id])
-    end
+      if params[:student]
+        begin
+          redirect_to student_path(params[:student][:id])
+        rescue ActionController::UrlGenerationError => e
+          flash[:error] = "ERROR: Please enter an id."
+          redirect_to students_path
+        end
+    end 
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+     begin
+      set_student
+    
+    rescue ActiveRecord::RecordNotFound => e
+       flash[:error] = "ERROR: " + e.to_s + ". Please try again."
+       redirect_to students_path
+
+    end    
   end
 
   # GET /students/new

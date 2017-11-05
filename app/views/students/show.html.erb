@@ -2,8 +2,10 @@
 <% if not current_admin %> 
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
 <% end %>
-<br>
 
+<% if not @student.quiz_results.exists?(@quiz_result)%>
+<h1> No Quiz Results Available</h1>
+<%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
   <div class="table-responsive" >
     <table class="table">
