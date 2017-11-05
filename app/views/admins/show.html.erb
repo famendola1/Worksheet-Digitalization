@@ -14,7 +14,7 @@
   <tbody>
     <% @admin.courses.each do |course| %>
       <tr>
-        <td><%= link_to course.name + ' - Section ' + course.section.to_s, admin_course_path(course, admin_id: @admin.id) %></td>
+        <td><%= link_to course.name + ' - Section ' + course.section.to_s + ' - ' + course.semester + ' ' + course.year.to_s, admin_course_path(course, admin_id: @admin.id) %></td>
       </tr>
     <% end %>
   </tbody>
