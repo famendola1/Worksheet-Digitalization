@@ -29,7 +29,7 @@
 <br>
 <br>
 <%= form_tag import_admin_course_students_path(admin_id: current_admin.id, course_id: @course.id), multipart: true do %>
-  <%= file_field_tag :file %>
+  <%= file_field_tag :file, :required => true %>
   <%= submit_tag "Import CSV", class: "btn" %>
 <% end %>
 

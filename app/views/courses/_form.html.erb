@@ -13,22 +13,22 @@
 
   <div class="actions">
     <%= form.label :course_name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :required => true %>
   </div>
 
   <div class="actions">
     <%= form.label :section %>
-    <%= form.number_field :section, min: 0%>
+    <%= form.number_field :section, min: 0, :required => true%>
   </div>
 
   <div class="actions">
     <%= form.label :semester %>
-    <%= form.select :semester, ["Fall", "Spring"] %>
+    <%= form.select :semester, ["Fall", "Spring"], :required => true %>
   </div>
 
   <div class="actions">
     <%= form.label :year %>
-    <%= form.number_field :year %>
+    <%= form.number_field :year, :required => true %>
   </div>
 
   <div class="actions">
