@@ -42,15 +42,6 @@ Now, to use the app, run ```rails server``` and navigate to localhost:3000 in yo
 
 We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handle the admin data. The admin data is collected through a form on the sign up page. The data is then stored in the database with columns that are predefined by devise. We added a name column to the database since it wasn't predefined by devise. An admin has many courses
 
-### Enrollment
-
-| type    |  attribute |
-|---------|------------|
-| Integer | course_id  |
-| Integer | student_id |
-
-Enrollments are used to represent the has_many through relationship that exists between courses and students. This relationship allows for courses to have multiple students and for students to be enrolled in multiple courses. In order to have this relationship we need to store all the references to relative foreign keys, which is what this model is used for. An enrollment belongs_to both a course and a student which allows for rails to make this association.
-
 ### Course
 
 | type    |  attribute |
@@ -71,6 +62,15 @@ The id is the key attribute for a course and it makes each course unique. The co
 | String  | category   |
 
 The purpose of the student id is to make each student unique and should correspond to the student’s school id number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique id. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at id’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many courses through enrollment and has many quiz results.
+
+### Enrollment
+
+| type    |  attribute |
+|---------|------------|
+| Integer | course_id  |
+| Integer | student_id |
+
+Enrollments are used to represent the has_many through relationship that exists between courses and students. This relationship allows for courses to have multiple students and for students to be enrolled in multiple courses. In order to have this relationship we need to store all the references to relative foreign keys, which is what this model is used for. An enrollment belongs_to both a course and a student which allows for rails to make this association.
 
 ### Quiz Result
 
