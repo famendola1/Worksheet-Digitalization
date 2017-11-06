@@ -42,7 +42,9 @@ class Student < ApplicationRecord
     CSV.foreach(file.path, headers: false) do |row|
       student_id, name = row
       Student.create(student_id: student_id, name: name)
-      course.enrollments.create(student_id: student_id)
+      if course.enrollments.find_by(student_id: student_id).nil?
+        course.enrollments.create(student_id: student_id)
+      end
     end
   end
 end
