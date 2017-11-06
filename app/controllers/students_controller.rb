@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-      if params[:student]
+    if params[:student]
         begin
           redirect_to student_path(params[:student][:id])
         rescue ActionController::UrlGenerationError => e
@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-     begin
+    begin
       set_student
     
     rescue ActiveRecord::RecordNotFound => e
@@ -80,7 +80,8 @@ class StudentsController < ApplicationController
   end
   
   def import
-    Student.import(params[:file])
+    @course = Course.find(params[:course_id])
+    Student.import(params[:file], @course)
     redirect_to root_url
   end
 

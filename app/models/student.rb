@@ -38,10 +38,11 @@ class Student < ApplicationRecord
     end
   end
   
-  def self.import(file)
+  def self.import(file, course)
     CSV.foreach(file.path, headers: false) do |row|
       student_id, name = row
       Student.create(student_id: student_id, name: name)
+      course.enrollments.create(student_id: student_id)
     end
   end
 end

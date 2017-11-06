@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   
   # Routing for students and quiz result requests
   resources :students, except: [:new, :create] do
-    collection {post :import}
     resources :quiz_results, except: [:index]
   end
   
   resources :admins, only: [:show] do
     resources :courses, except: [:index] do
-      resources :students, only: [:new, :create]
+      resources :students, only: [:new, :create] do
+        collection {post :import}
+      end
     end
   end
 
