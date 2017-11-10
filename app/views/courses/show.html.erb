@@ -21,12 +21,11 @@
 </div>
 
 <%= link_to 'Add Student', new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id), class: 'btn btn-primary' %>
-<%= link_to "Export", admin_course_path(@course, admin_id: @course.admin.id, format: "csv"), class: "btn btn-primary" %>
+<%= link_to "Export Data", admin_course_path(@course, admin_id: @course.admin.id, format: "csv"), class: "btn btn-primary" %>
 <%= link_to 'Delete Course', admin_course_path([@course, current_admin]), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <br>
 <br>
 <%= form_tag import_admin_course_students_path(admin_id: current_admin.id, course_id: @course.id), multipart: true do %>
   <%= file_field_tag :file, :required => true, "data-filename-placement" => "inside" %>
-  <!--<input type="file" data-filename-placement="inside">-->
-  <%= submit_tag "Import CSV", class: "btn" %>
+  <%= submit_tag "Import Students", class: "btn btn-submit" %>
 <% end %>
