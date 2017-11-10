@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% if not current_admin %> 
   <h4> Hello, <%= @student.name %> </h4>
+  <%= get_description(@student.category) %>
   <br>
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
 <% else %>
