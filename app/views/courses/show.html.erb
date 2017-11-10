@@ -3,8 +3,9 @@
 <h4> Section: <%= @course.section %> </h4>
 <h4> <%= @course.semester %> <%= @course.year %> </h4>
 
-<h1>Students</h1>
+<%= link_to 'Edit', edit_admin_course_path(@course, admin_id: current_admin.id) %>
 
+<h1>Students</h1>
 <table>
   <thead>
     <tr>
