@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap.file-input
 
 
 $(document).ready(function() {
@@ -116,5 +117,8 @@ $(document).ready(function() {
 		  }
 		}, false);
   })
+  
+  $('input[type=file]').bootstrapFileInput();
+  $('.file-inputs').bootstrapFileInput();
 
 });
