@@ -1,6 +1,16 @@
-<h1>Editing Student</h1>
+<h1>Update Student</h1>
 
-<%= render 'form', student: @student %>
+<%= form_for @student, url: {:action => "update"}, student_id: @student_id do |form| %>
+
+  <div class="actions">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Student" %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @student %> |
 <%= link_to 'Back', students_path %>
