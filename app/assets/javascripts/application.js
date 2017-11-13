@@ -15,11 +15,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap.file-input
 
+document.addEventListener("turbolinks:load", function() {
+    $('input[type=file]').bootstrapFileInput();
+    $('.file-inputs').bootstrapFileInput();	
+});
 
 $(document).ready(function() {
-
-	// Javascript for button validation
+  
+  // Javascript for button validation
   $(document).on('click', 'input[type=radio]', function() {
     el = $(this);
     col = el.data("col");
@@ -116,5 +121,4 @@ $(document).ready(function() {
 		  }
 		}, false);
   })
-
 });

@@ -846,8 +846,10 @@ Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that
 
 <br>
 
-  <div class="actions" id="quizSubmit">
-    <%= form.submit %>
+  <div class="actions">
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      Submit
+    <% end %>
   </div>
 <% end %>
 

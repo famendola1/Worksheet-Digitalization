@@ -11,53 +11,53 @@
 <% communicator_responses = ["make sure everyone is involved in the discussion","try to help him or her build a positive team climate", "overuse humor and other tension-reducing devices", "try to break the tension with a supportive or humorous remark", "encouraging", "too laid-back", "push for increased emphasis on listening, feedback, and participation", "provide other team members with feedback on their behavior as team members", "not serious about getting the real job done", "high-level listening skills", "try to meet and get to know other team members", "heartless because they don’t care about how people relate to each other", "create a participatory decision-making climate", "a consensus of team members", "see team climate as an end in itself", "participative", "enthusiastic and humorous", "see the importance of working well together"] %>
 
 <% challenger_responses = ["raise questions about our goals or methods", "am willing to disagree with him or her when necessary", "am too direct in communicating with other team members", "press for an honest discussion of the differences", "candid", "self-righteous", "press for a candid discussion of our problems", "question some aspect of the team’s work", "a nitpicker", "a willingness to ask tough questions", "ask pointed questions about our goals and methods", "dishonest because they are not able to be as confrontational as I am", "bring out diverse ideas and challenge assumptions", "an open and candid assessment of the issues", "play the devil’s advocate far too long", "independent", "honest and authentic", "object to team action with which they disagree"] %>
-<table class = "table">
-<col width="300">
-<col width="180">
-<col width="80">
-<col width="180">
-<col width="80">
-<col width="180">
-<col width="80">
-<col width="180">
-<col width="80">
-<tr>
-  <th> Question </th>
-  <th> Contributor </th>
-  <th></th>
-  <th> Collaborator </th>
-  <th></th>
-  <th> Communicator </th>
-  <th></th>
-  <th> Challenger </th>
-  <th></th>
-</tr>
-
-
-<% @quiz_result.answers.each do |answer|%>
-    <% category = [answer.responseA, answer.responseB, answer.responseC, answer.responseD] %>
-    <tr>
-    <td> <%= questions[offset] %> </td>
-
-    <td><%= contributor_responses[offset]%>  </td> 
-    <td><b><%= category[(0 + offset) % 4] %> </b></td>
-
-    <td><%= collaborator_responses[offset] %> </td>
-    <td><b><%= category[(1 + offset) % 4] %> </b> </td>
-
-    <td><%= communicator_responses[offset] %>  </td>
-    <td><b><%= category[(2 + offset) % 4] %> </b> </td>
-
-    <td><%= challenger_responses[offset] %>  </td>
-    <td> <b> <%= category[(3 + offset) % 4] %> </b></td>
-
-    <% offset += 1 %>
-  
-
-<%end %>
-
-</table>
-</br>
-</br>
-</br>
+<div class="table-responsive">
+  <table class = "table">
+    <col width="300">
+    <col width="180">
+    <col width="80">
+    <col width="180">
+    <col width="80">
+    <col width="180">
+    <col width="80">
+    <col width="180">
+    <col width="80">
+    <thead>
+      <tr>
+        <th> Question </th>
+        <th> Contributor </th>
+        <th></th>
+        <th> Collaborator </th>
+        <th></th>
+        <th> Communicator </th>
+        <th></th>
+        <th> Challenger </th>
+        <th></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @quiz_result.answers.each do |answer|%>
+        <% category = [answer.responseA, answer.responseB, answer.responseC, answer.responseD] %>
+        <tr>
+          <td> <%= questions[offset] %> </td>
+    
+          <td><%= contributor_responses[offset]%>  </td> 
+          <td><b><%= category[(0 + offset) % 4] %> </b></td>
+      
+          <td><%= collaborator_responses[offset] %> </td>
+          <td><b><%= category[(1 + offset) % 4] %> </b> </td>
+      
+          <td><%= communicator_responses[offset] %>  </td>
+          <td><b><%= category[(2 + offset) % 4] %> </b> </td>
+      
+          <td><%= challenger_responses[offset] %>  </td>
+          <td> <b> <%= category[(3 + offset) % 4] %> </b></td>
+        </tr>
+        <% offset += 1 %>
+    <%end %>
+    </tbody>
+    
+  </table>
+</div>
 
