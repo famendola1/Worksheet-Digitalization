@@ -2,7 +2,6 @@
 <h4> <%= @course.name %> Section: <%= @course.section %> <%= @course.semester %> <%= @course.year %> </h4>
 
 <h1>Students</h1>
-
 <div class="table-responsive">
   <table class="table table-hover">
     <!--<thead>-->
@@ -13,7 +12,8 @@
     <tbody>
       <% @course.students.each do |student| %>
         <tr>
-          <td><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
+          <td style="padding-right: 5em"><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
+          <td><%= link_to 'Edit', edit_student_path(student, course_id: @course.id,  admin_id: current_admin.id) %></td>
         </tr>
       <% end %>
     </tbody>

@@ -43,8 +43,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
-        format.json { render :show, status: :ok, location: @course }
+        format.html { redirect_to admin_course_path, notice: 'Course was successfully updated.' }
+        format.json { render :show, status: :ok, location: send(@course) }
       else
         format.html { render :edit }
         format.json { render json: @course.errors, status: :unprocessable_entity }

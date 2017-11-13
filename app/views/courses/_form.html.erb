@@ -28,7 +28,7 @@
 
   <div class="actions">
     <%= form.label :year %>
-    <%= form.number_field :year, :required => true %>
+    <%= form.number_field :year, min: 0, :required => true %>
   </div>
 
   <div class="actions">
