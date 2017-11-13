@@ -14,6 +14,37 @@
     </div>
   <% end %>
 
+  <h1 align="center"> Quiz Result </h1>
+  <br>
+  <div class="table-responsive" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Contributor</th>
+          <th>Collaborator</th>
+          <th>Communicator</th>
+          <th>Challenger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @quiz_result.contributor %></td>
+          <td><%= @quiz_result.collaborator %></td>
+          <td><%= @quiz_result.communicator %></td>
+          <td><%= @quiz_result.challenger %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <h4> Contributor: <%= get_contributor_description() %> </h4>
+  <br>
+  <h4> Collaborator: <%= get_collaborator_description() %> </h4>
+  <br>
+  <h4> Communicator: <%= get_communicator_description() %> </h4>
+  <br>
+  <h4> Challenger: <%= get_challenger_description() %> </h4>
+  <br>
   <div class="field">
     <%= form.label :reflection %>
     <br>
@@ -24,6 +55,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-
-<%= link_to 'Back', student_path(@quiz_result.student_id) %>
-
