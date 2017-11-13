@@ -1,6 +1,31 @@
-<h1>Editing Course</h1>
+<h1>Update your Course</h1>
 
-<%= render 'form', course: @course %>
+<%= form_for @course, url: {:action => "update"}, admin_id: @course.admin_id, course_id: @course.course_id do |form| %>
+
+  <div class="actions">
+    <%= form.label :course_name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.label :section %>
+    <%= form.number_field :section, min: 0%>
+  </div>
+
+  <div class="actions">
+    <%= form.label :semester %>
+    <%= form.select :semester, ["Fall", "Spring"] %>
+  </div>
+
+  <div class="actions">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Course" %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', admin_course_path(@course, @course.admin.id) %> |
 <%= link_to 'Back', admin_session_path %>
