@@ -12,6 +12,15 @@
 
 <% challenger_responses = ["raise questions about our goals or methods", "am willing to disagree with him or her when necessary", "am too direct in communicating with other team members", "press for an honest discussion of the differences", "candid", "self-righteous", "press for a candid discussion of our problems", "question some aspect of the team’s work", "a nitpicker", "a willingness to ask tough questions", "ask pointed questions about our goals and methods", "dishonest because they are not able to be as confrontational as I am", "bring out diverse ideas and challenge assumptions", "an open and candid assessment of the issues", "play the devil’s advocate far too long", "independent", "honest and authentic", "object to team action with which they disagree"] %>
 <table class = "table">
+<col width="300">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
 <tr>
   <th> Question </th>
   <th> Contributor </th>
@@ -29,7 +38,6 @@
     <% category = [answer.responseA, answer.responseB, answer.responseC, answer.responseD] %>
     <tr>
     <td> <%= questions[offset] %> </td>
-
 
     <td><%= contributor_responses[offset]%>  </td> 
     <td><b><%= category[(0 + offset) % 4] %> </b></td>
@@ -49,5 +57,7 @@
 <%end %>
 
 </table>
-<%= link_to 'Back', student_path(@quiz_result.student_id) %>
 
+</br>
+</br>
+</br>
