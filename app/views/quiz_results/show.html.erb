@@ -3,15 +3,34 @@
 <%= @quiz_result.student_id %> </h1>
 <% offset = 0 %>
 <% questions = ["1. During team meetings, I usually", "2. In relating to the team leader, I:", "3. Under stress, I sometimes:", "4. When conflicts arise on the team, I usually:", "5. Other team members usually see me as:", "6. At times, I am:", "7. When things go wrong on the team, I usually:", "8. A risky team contribution for me is to:", "9. Sometimes other team members see me as:", "10. I believe team problem solving requires:", "11. When a new team is forming, I usually:", "12. At times, I make other people feel:", "13. I believe the role of the team leader is to:", "14. I believe team decisions should be based on:", "15. Sometimes I:", "16. People have often described me as:", "17. Most of the time, I am:", "18. In relating to other team members, at times I get annoyed because they don’t:"] %>
+
+<% contributor_responses = ["provide the team with technical data or information", "offer advice based upon my area of expertise", "lose patience with the need to get involved in discussions", "provide reasons why one side or the other is correct", "factual", "shortsighted", "work hard to provide more and better information", "push the team to set higher performance standards", "a perfectionist", "good solid data", "want to know what is expected of me", "guilty because they don’t live up to my standards", "ensure the efficient solution of business problems", "the weight of the evidence", "fail to see the importance of effective team process", "dependable", "responsible and hardworking", "complete their team assignments on time"] %>
+
+<% collaborator_responses = ["keep the team focused on our mission or goal", "suggest that our work be goal directed", "try to break the tension with a supportive or humorous remark", "see the differences as a basis for a possible change in team direction", "flexible", "too results oriented", "suggest that we revisit out basic mission", "work outside my defined role or job area", "unwilling to reassess the team’s mission or goals", "cooperation by all team members", "seek clarity about our basic mission", "small-minded because they don’t think long-range", "help the team establish long-range goals and short-term objectives", "the team’s mission and goals", "overemphasize strategic issues and minimize short-term task accomplishments", "imaginative", "committed and flexible", "revisit team goals or check progress"] %>
+
+<% communicator_responses = ["make sure everyone is involved in the discussion","try to help him or her build a positive team climate", "overuse humor and other tension-reducing devices", "try to break the tension with a supportive or humorous remark", "encouraging", "too laid-back", "push for increased emphasis on listening, feedback, and participation", "provide other team members with feedback on their behavior as team members", "not serious about getting the real job done", "high-level listening skills", "try to meet and get to know other team members", "heartless because they don’t care about how people relate to each other", "create a participatory decision-making climate", "a consensus of team members", "see team climate as an end in itself", "participative", "enthusiastic and humorous", "see the importance of working well together"] %>
+
+<% challenger_responses = ["raise questions about our goals or methods", "am willing to disagree with him or her when necessary", "am too direct in communicating with other team members", "press for an honest discussion of the differences", "candid", "self-righteous", "press for a candid discussion of our problems", "question some aspect of the team’s work", "a nitpicker", "a willingness to ask tough questions", "ask pointed questions about our goals and methods", "dishonest because they are not able to be as confrontational as I am", "bring out diverse ideas and challenge assumptions", "an open and candid assessment of the issues", "play the devil’s advocate far too long", "independent", "honest and authentic", "object to team action with which they disagree"] %>
 <table class = "table">
+<col width="300">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
+<col width="180">
+<col width="80">
 <tr>
   <th> Question </th>
   <th> Contributor </th>
-
+  <th></th>
   <th> Collaborator </th>
-
+  <th></th>
   <th> Communicator </th>
+  <th></th>
   <th> Challenger </th>
+  <th></th>
 </tr>
 
 
@@ -20,11 +39,17 @@
     <tr>
     <td> <%= questions[offset] %> </td>
 
+    <td><%= contributor_responses[offset]%>  </td> 
+    <td><b><%= category[(0 + offset) % 4] %> </b></td>
 
-    <td><%= category[(0 + offset) % 4] %></td>
-    <td><%= category[(1 + offset) % 4] %></td>
-    <td><%= category[(2 + offset) % 4] %></td>
-    <td><%= category[(3 + offset) % 4] %></td>
+    <td><%= collaborator_responses[offset] %> </td>
+    <td><b><%= category[(1 + offset) % 4] %> </b> </td>
+
+    <td><%= communicator_responses[offset] %>  </td>
+    <td><b><%= category[(2 + offset) % 4] %> </b> </td>
+
+    <td><%= challenger_responses[offset] %>  </td>
+    <td> <b> <%= category[(3 + offset) % 4] %> </b></td>
 
     <% offset += 1 %>
   
@@ -32,3 +57,7 @@
 <%end %>
 
 </table>
+</br>
+</br>
+</br>
+
