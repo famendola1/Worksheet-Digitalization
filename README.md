@@ -51,7 +51,7 @@ We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handl
 | String  | semester   |
 | Integer | admin_id   |
 
-The id is the key attribute for a course and it makes each course unique. The course name and semester are for visual purposes. It allows the admin to view course names instead of an id, and the semester helps distinguish courses with the same name offered in different semesters. The admin_id is a way to relate the course to a specific admin. A course belongs to an admin and has many and belongs to many students.
+The id is the key attribute for a course and it makes each course unique. The course name and semester are for visual purposes. It allows the admin to view course names instead of an id, and the semester helps distinguish courses with the same name offered in different semesters. The admin_id is a way to relate the course to a specific admin. A course belongs to an admin and has many students through enrollments.
 
 ### Student
 
@@ -61,16 +61,16 @@ The id is the key attribute for a course and it makes each course unique. The co
 | String  | name       |
 | String  | category   |
 
-The purpose of the student id is to make each student unique and should correspond to the student’s school id number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique id. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at id’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many and belongs to many a courses and has many quiz results.
+The purpose of the student id is to make each student unique and should correspond to the student’s school id number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique id. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at id’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many courses through enrollment and has many quiz results.
 
-### Course Student Join Table
+### Enrollment
 
 | type    |  attribute |
 |---------|------------|
 | Integer | course_id  |
 | Integer | student_id |
 
-This table represents the has_to_and_belongs_to_many relationship that exists between courses and students. This relationship allows for courses to have multiple students and for students to be enrolled in multiple courses. In order to have this relationship we need to store all the references to relative foreign keys, which is what this join table is used for.
+Enrollments are used to represent the has_many through relationship that exists between courses and students. This relationship allows for courses to have multiple students and for students to be enrolled in multiple courses. In order to have this relationship we need to store all the references to relative foreign keys, which is what this model is used for. An enrollment belongs_to both a course and a student which allows for rails to make this association.
 
 ### Quiz Result
 
