@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id) }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
