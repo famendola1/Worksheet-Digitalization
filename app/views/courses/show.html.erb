@@ -4,16 +4,12 @@
 <h1>Students</h1>
 <div class="table-responsive">
   <table class="table table-hover">
-    <!--<thead>-->
-    <!--  <tr>-->
-    <!--    <th colspan="1"></th>-->
-    <!--  </tr>-->
-    <!--</thead>-->
     <tbody>
       <% @course.students.each do |student| %>
         <tr>
           <td style="padding-right: 5em"><%= link_to student.name, student_path(student, course_id: @course.id) %></td>
           <td><%= link_to 'Edit', edit_student_path(student, course_id: @course.id,  admin_id: current_admin.id) %></td>
+          <td><%= link_to 'Remove', enrollment_path(Enrollment.find_by(student_id: student.id, course_id: @course.id)), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
