@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 <% if not current_admin %> 
   <h4> Hello, <%= @student.name %> </h4>
-  <%= get_description(@student.category) %>
-  <br>
   <%= link_to 'Take Quiz', new_student_quiz_result_path(@quiz_result, student_id: @student.student_id), class: 'btn btn-primary' %>
+  <p><%= get_description(@student.category) %></p>
 <% else %>
   <h4> Student: <%= @student.name %> </h4>
 <% end %>
 
 <br>
-<br>
 <h4> Quiz Results </h4>
 <hr>
 
-<% if not @student.quiz_results.exists?(@quiz_result)%>
+<% if @student.quiz_results.empty? %>
 <h1> No Quiz Results Available</h1>
 <%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>

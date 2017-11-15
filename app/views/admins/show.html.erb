@@ -2,23 +2,17 @@
 
 <h1>Courses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% current_admin.courses.each do |course| %>
-      <tr>
-        <td style="padding-right: 5em"><%= link_to course.name + ' - Section ' + course.section.to_s + ' - ' + course.semester + ' ' + course.year.to_s, admin_course_path(course, admin_id: current_admin.id) %></td>
-        <td><%= link_to 'Edit', edit_admin_course_path(course, admin_id: current_admin.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<hr>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tbody>
+      <% current_admin.courses.each do |course| %>
+        <tr>
+          <td style="padding-right: 5em"><%= link_to course.name + ' - Section ' + course.section.to_s + ' - ' + course.semester + ' ' + course.year.to_s, admin_course_path(course, admin_id: current_admin.id) %></td>
+          <td><%= link_to 'Edit', edit_admin_course_path(course, admin_id: current_admin.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= link_to 'New Course', new_admin_course_path(@course, admin_id: current_admin.id), class: 'btn btn-primary' %>

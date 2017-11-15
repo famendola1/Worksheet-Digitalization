@@ -1,10 +1,8 @@
 class Student < ApplicationRecord
-
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :courses, through: :enrollments
   has_many :quiz_results
   validates :student_id, uniqueness: { scope: :student_id}
-
   require 'csv'
   include StudentsHelper
   
@@ -39,10 +37,22 @@ class Student < ApplicationRecord
   end
   
   def self.import(file, course)
-    CSV.foreach(file.path, headers: false) do |row|
-      student_id, name = row
-      Student.create(student_id: student_id, name: name)
-      course.enrollments.create(student_id: student_id)
+    CSV.foreach(file.path, headers: true) do |row|
+      _,student_id,name,_,_,_,_ = row.to_a
+      Student.create(student_id: student_id[1], name: extract_name(name[1]))
+      if course.enrollments.find_by(student_id: student_id[1]).nil?
+        course.enrollments.create(student_id: student_id[1])
+      end
     end
+  end
+  
+  private
+  
+  def self.extract_name(name)
+    name = name.split(%r{,+\s*})
+    tmp = name[0]
+    name[0] = name[1]
+    name[1] = tmp
+    name = name.join(" ")
   end
 end
