@@ -41,15 +41,19 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @course = Course.find(params[:course_id])
-    @student = Student.create( student_params ) 
+    if !Student.exists?(student_params)
+      @student = Student.create( student_params ) 
+    else
+      @student = Student.find_by(student_params)
+    end
     @course.enrollments.create( :student_id => @student.student_id )
 
     respond_to do |format|
-      if @student.save
+      if @course.save #@course.enrollments.find_by(:student_id => @student.student_id).save
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
-        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id) }
+        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was not added. Enrollment already exists.' }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
