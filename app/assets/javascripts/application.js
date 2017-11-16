@@ -18,12 +18,13 @@
 //= require bootstrap.file-input
 
 document.addEventListener("turbolinks:load", function() {
-    $('input[type=file]').bootstrapFileInput();
-    $('.file-inputs').bootstrapFileInput();	
+	  if ($('.btn-file').length === 0) {
+	    $('input[type=file]').bootstrapFileInput();
+	    $('.file-inputs').bootstrapFileInput();	
+	  }
 });
 
 $(document).ready(function() {
-  
   // Javascript for button validation
   $(document).on('click', 'input[type=radio]', function() {
     el = $(this);
