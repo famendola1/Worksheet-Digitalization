@@ -40,20 +40,32 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
+    enrollment_created = false
     @course = Course.find(params[:course_id])
-    if !Student.exists?(student_params)
+    if !Student.exists?(:student_id => student_params[:student_id])
       @student = Student.create( student_params ) 
+      @course.enrollments.create( :student_id => @student.student_id )
+      enrollment_created = true
+    elsif Student.exists?(:student_id => student_params[:student_id]) and !Student.exists?(:name => student_params[:name])
+       flash[:danger] = get_name_error_message(student_params)
     else
       @student = Student.find_by(student_params)
+      name = @student.name
+      @course.enrollments.create( :student_id => @student.student_id )
+      enrollment_created = true
     end
-    @course.enrollments.create( :student_id => @student.student_id )
 
     respond_to do |format|
-      if @course.save #@course.enrollments.find_by(:student_id => @student.student_id).save
-        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was successfully created.' }
+      if @course.save and enrollment_created
+        flash[:success] = 'Student was successfully added.'
+        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render :show, status: :created, location: @student }
+      elsif !enrollment_created
+        
+        format.html {redirect_to new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id)  }
       else
-        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id), notice: 'Student was not added. Enrollment already exists.' }
+        flash[:danger] = 'Student was not added. Student id or name already exists.'
+        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
