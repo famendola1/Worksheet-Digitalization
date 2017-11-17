@@ -37,36 +37,9 @@ $(document).ready(function() {
     el.prop("checked", true);
   })
 
-
-// Javascript for result calculation
-  $(document).on('click', 'input[type=radio]', function() {
-    var totalCon = 0, totalCol = 0, totalCom = 0, totalCha = 0; 
-
-	$("input[data-prop='con']:checked").each(function() {
-	totalCon += parseInt($(this).val())});
-	$("#totalCon").html(totalCon);
-	$("#con_val").val(totalCon)
-
-	$("input[data-prop='col']:checked").each(function() {
-	totalCol += parseInt($(this).val())});
-	$("#totalCol").html(totalCol);
-	$("#col_val").val(totalCol)
-
-	$("input[data-prop='com']:checked").each(function() {
-	totalCom += parseInt($(this).val())});
-	$("#totalCom").html(totalCom);
-	$("#com_val").val(totalCom)
-
-	$("input[data-prop='cha']:checked").each(function() {
-	totalCha += parseInt($(this).val())});
-	$("#totalCha").html(totalCha);
-	$("#cha_val").val(totalCha)
-
-  })
-
-
   // Javascript for submit button validation
   $(document).on('click', '#quizSubmit', function() {
+  		console.log("test1");
 		var questions = validate_form();
 		if( questions.size == 0 ) {
 		 	return;
@@ -89,12 +62,14 @@ $(document).ready(function() {
 	// Iterates through all answers and checks that they are ranked 
 	// Returns 0 if all are checked, otherwise returns first question that isn't finished
 	function validate_form() {
+		console.log("test1");
 		var numbers = new Set();
 		for (i = 1; i < 19; i++) {
 			for (j = 1; j < 5; j++) {
 				name = "q" + i + "a" + j;
 				if ($("input[name='" + name + "']:checked").length == 0) {
 					numbers.add(i);
+					console.log("test");
 				}
 			}
 		}

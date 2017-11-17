@@ -3,6 +3,7 @@ class Student < ApplicationRecord
   has_many :courses, through: :enrollments
   has_many :quiz_results
   validates :student_id, uniqueness: { scope: :student_id}
+  validates :name, uniqueness: { scope: :name}
   require 'csv'
   include StudentsHelper
   
