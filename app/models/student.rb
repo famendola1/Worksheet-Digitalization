@@ -39,11 +39,15 @@ class Student < ApplicationRecord
   def self.import(file, course)
     CSV.foreach(file.path, headers: true) do |row|
       _,student_id,name,_,_,_,_ = row.to_a
+      if student_id[1].nil? or name[1].nil?
+        return 0
+      end
       Student.create(student_id: student_id[1], name: extract_name(name[1]))
       if course.enrollments.find_by(student_id: student_id[1]).nil?
         course.enrollments.create(student_id: student_id[1])
       end
     end
+    return 1
   end
   
   private

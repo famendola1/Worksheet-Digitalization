@@ -84,8 +84,12 @@ class StudentsController < ApplicationController
   
   def import
     @course = Course.find(params[:course_id])
-    Student.import(params[:file], @course)
-    redirect_to root_url
+    if Student.import(params[:file], @course) == 1
+      flash[:success] = 'Successfullt imported students'
+    else
+      flash[:danger] = "Unable to import students. Invalid CSV file."
+    end
+    redirect_to admin_course_path(@course.id, admin_id: current_admin.id)
   end
 
   private
