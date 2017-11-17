@@ -8,7 +8,7 @@ module StudentsHelper
     end
 
     def get_description(category)
-    	if category == "Contributor"
+    	if category == "Contributer"
     		return "Based on your last quiz result, you are a Contributor.
     		Which means that you get your team to focus on the immediate task."
     	elsif category == "Collaborator"
