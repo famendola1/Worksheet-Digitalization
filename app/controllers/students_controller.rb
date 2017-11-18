@@ -100,7 +100,7 @@ class StudentsController < ApplicationController
     if Student.import(params[:file], @course) == 1
       flash[:success] = 'Successfullt imported students'
     else
-      flash[:danger] = "Unable to import students. Invalid CSV file."
+      flash[:danger] = "Error occured during import. Please check your CSV file."
     end
     redirect_to admin_course_path(@course.id, admin_id: current_admin.id)
   end
