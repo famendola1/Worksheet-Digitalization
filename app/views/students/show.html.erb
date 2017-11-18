@@ -14,6 +14,7 @@
 <h1> No Quiz Results Available</h1>
 <%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
+  <p><%= r.created_at %></p>
   <div class="table-responsive" >
     <table class="table">
       <thead>
@@ -48,4 +49,6 @@
     <% end %>
   <% end %>
   <%= link_to "View Results", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
+  <hr>
 <% end %>
+<p style="padding-bottom: 30px;"">

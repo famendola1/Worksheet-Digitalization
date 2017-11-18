@@ -18,10 +18,7 @@ The Team-Player Questionnaire will help you identify your style as a team player
 <p>
 First, this is a questionnaire, and, therefore, there are no right or wrong responses. Please answer each item according to how you honestly feel you function now as a team member rather than how you used to be or how you would like to be.
 <br>
-You will be asked to complete eighteen sentences. Each sentence has four possible endings. Please rank the endings in the order in which you feel each one applies to you. Place the number 4 next to the ending which is most applicable to you and continue down to a 1 next to the ending which is least applicable to you.
-<br>
-
-Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that some of the sentences will have two or more endings that apply to you or will have none that applies to you, but you should assume these are your only choices and rank them accordingly. Each set of endings must be ranked 4, 3, 2, and 1. 
+You will be asked to complete eighteen sentences. Each sentence has four possible endings. Please rank the endings in the order in which you feel each one applies to you. It is possible that some of the sentences will have two or more endings that apply to you or will have none that applies to you, but you should assume these are your only choices and rank them accordingly. 
 </p>
 
 <%= form_with(url: student_quiz_results_path, model: quiz_result, student: @quiz_result.student, local: true) do |form| %>
@@ -36,7 +33,9 @@ Please do not make ties or use 4, 3, 2, or 1 more than once. It is possible that
       </ul>
     </div>
   <% end %>
-  
+
+<br>  
+
 <table class="table">
 <h4>1. During team meetings, I usually:</h4>
 <col width="600">
