@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
         begin
           redirect_to student_path(params[:student][:id])
         rescue ActionController::UrlGenerationError => e
-          flash[:error] = "ERROR: Please enter an id."
+          flash[:danger] = "ERROR: Please enter an id."
           redirect_to students_path
         end
     end 
@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
       set_student
     
     rescue ActiveRecord::RecordNotFound => e
-       flash[:error] = "ERROR: " + e.to_s + ". Please try again."
+       flash[:danger] = "ERROR: " + e.to_s + ". Please try again."
        redirect_to students_path
 
     end    
