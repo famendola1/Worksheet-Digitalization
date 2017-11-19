@@ -32,4 +32,11 @@ module StudentsHelper
         error = "The Student id, " + id.to_s + ", already exists. " + name + " corresponds to that id."
         return error
     end
+
+    def check_id_and_name(student_params)
+        student1 = Student.find_by(:student_id => student_params[:student_id])
+        student2 = Student.find_by(:name => student_params[:name])
+        return student1 != student2
+    end
+
 end
