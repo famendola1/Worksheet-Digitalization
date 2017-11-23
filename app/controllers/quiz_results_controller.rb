@@ -72,7 +72,8 @@ class QuizResultsController < ApplicationController
   def destroy
     @quiz_result.destroy
     respond_to do |format|
-      format.html { redirect_to quiz_results_url, notice: 'Quiz result was successfully destroyed.' }
+      flash[:success] = "Quiz result was successfully destroyed."
+      format.html { redirect_to quiz_results_url }
       format.json { head :no_content }
     end
   end
