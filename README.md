@@ -104,7 +104,6 @@ The id uniquely identifies each quiz result from one another. Collaborator, chal
 The id is the unique identifier of the each answer. The question is which question the answer corresponds to. responseA, responseB, responseC, and responseD correspond to the ranking each of the respones got from completing the quiz. Lastly, it has a quiz_result_id so it can be related to the unique quiz it belongs to.
 
 ## Functionality
-// TODO: Add Images
 
 ### Overview
 Our application will have a student interface and an admin interface. In the student interface, students have the ability to take the Parker Team Player Style Survey and see their own results. The Parker Team Player Survey poses 18 questions on problems that may occur in a team setting and provides four possible approaches to which the student will rank the four possible answers from most applicable to least applicable. These scores would then be totaled to return the team player category to which the student likely belongs: Communicator, Collaborator, Challenger, or Contributor. The results for a survey will have the students highest category and the score for each category. On each student’s dedicated page they can see all of their results, sorted by most recent, and write or view a corresponding reflection for each. In the admin interface, the admin will have the ability to view all the results from students in their different classes, and they will have the ability to export all the student data for a specific class in a csv file.
