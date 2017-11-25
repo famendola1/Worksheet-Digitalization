@@ -14,7 +14,7 @@
 <h1> No Quiz Results Available</h1>
 <%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
-  <p><%= r.created_at %></p>
+  <p><b>Submitted:</b> <%= r[:created_at].strftime('%m-%d-%Y %r %Z') %></p>
   <div class="table-responsive" >
     <table class="table">
       <thead>
