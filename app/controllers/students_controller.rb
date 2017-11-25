@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
         begin
           redirect_to student_path(params[:student][:id])
         rescue ActionController::UrlGenerationError => e
-          flash[:error] = "ERROR: Please enter an id."
+          flash[:danger] = "ERROR: Please enter an id."
           redirect_to students_path
         end
     end 
@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
       set_student
     
     rescue ActiveRecord::RecordNotFound => e
-       flash[:error] = "ERROR: " + e.to_s + ". Please try again."
+       flash[:danger] = "ERROR: " + e.to_s + ". Please try again."
        redirect_to students_path
 
     end    
@@ -46,25 +46,23 @@ class StudentsController < ApplicationController
       @student = Student.create( student_params ) 
       @course.enrollments.create( :student_id => @student.student_id )
       enrollment_created = true
-    elsif Student.exists?(:student_id => student_params[:student_id]) and !Student.exists?(:name => student_params[:name])
+    elsif check_id_and_name(student_params)
        flash[:danger] = get_name_error_message(student_params)
     else
       @student = Student.find_by(student_params)
-      name = @student.name
       @course.enrollments.create( :student_id => @student.student_id )
       enrollment_created = true
     end
 
     respond_to do |format|
       if @course.save and enrollment_created
-        flash[:success] = 'Student was successfully added.'
+        flash[:success] = 'Student was successfully added to course.'
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render :show, status: :created, location: @student }
       elsif !enrollment_created
-        
         format.html {redirect_to new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id)  }
       else
-        flash[:danger] = 'Student was not added. Student id or name already exists.'
+        flash[:danger] = 'Student was not added to course. Student id or name already exists.'
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
@@ -76,7 +74,8 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        flash[:success] = 'Student was successfully updated.'
+        format.html { redirect_to @student }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -90,15 +89,20 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     respond_to do |format|
-      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+      flash[:success] = 'Student was successfully destroyed.'
+      format.html { redirect_to students_url }
       format.json { head :no_content }
     end
   end
   
   def import
     @course = Course.find(params[:course_id])
-    Student.import(params[:file], @course)
-    redirect_to root_url
+    if Student.import(params[:file], @course) == 1
+      flash[:success] = 'Successfullt imported students'
+    else
+      flash[:danger] = "Error occured during import. Please check your CSV file."
+    end
+    redirect_to admin_course_path(@course.id, admin_id: current_admin.id)
   end
 
   private

@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <% if not current_admin %> 
   <h4> Hello, <%= @student.name %> </h4>
   <p><%= get_description(@student.category) %></p>
@@ -15,7 +14,7 @@
 <h1> No Quiz Results Available</h1>
 <%end%>
 <% @student.quiz_results.order("created_at DESC").each do |r| %>
-  <p><%= r.created_at %></p>
+  <p><b>Submitted:</b> <%= r[:created_at].strftime('%m-%d-%Y %r %Z') %></p>
   <div class="table-responsive" >
     <table class="table">
       <thead>

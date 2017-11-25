@@ -42,7 +42,8 @@ class QuizResultsController < ApplicationController
           @student.category = category
           @student.save!
         end
-        format.html { redirect_to @student, notice: 'Quiz result was successfully created.' }
+        flash[:success] = 'Quiz was successfully submitted.'
+        format.html { redirect_to @student }
         format.json { render :show, status: :created, location: @quiz_result }
       else
         format.html { render :new }
@@ -56,7 +57,8 @@ class QuizResultsController < ApplicationController
   def update
     respond_to do |format|
       if @quiz_result.update(quiz_result_params)
-        format.html { redirect_to @quiz_result.student, notice: 'Quiz result was successfully updated.' }
+        flash[:success] = 'Reflection was successfully updated.'
+        format.html { redirect_to @quiz_result.student }
         format.json { render :show, status: :ok, location: send(@quiz_result) }
       else
         format.html { render :edit }

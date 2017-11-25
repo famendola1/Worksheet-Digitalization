@@ -105,4 +105,41 @@ The id is the unique identifier of the each answer. The question is which questi
 
 ## Functionality
 
-// TODO
+### Overview
+Our application will have a student interface and an admin interface. In the student interface, students have the ability to take the Parker Team Player Style Survey and see their own results. The Parker Team Player Survey poses 18 questions on problems that may occur in a team setting and provides four possible approaches to which the student will rank the four possible answers from most applicable to least applicable. These scores would then be totaled to return the team player category to which the student likely belongs: Communicator, Collaborator, Challenger, or Contributor. The results for a survey will have the students highest category and the score for each category. On each student’s dedicated page they can see all of their results, sorted by most recent, and write or view a corresponding reflection for each. In the admin interface, the admin will have the ability to view all the results from students in their different classes, and they will have the ability to export all the student data for a specific class in a csv file.
+
+The students will be organized into classes created by the admin. This allows the admin to view the students in a specific class. The students will not have the ability to create a class or put other students, including themselves, into a class. This feature will only be implemented in the admin interface. The class will have the names of the students that belong to the class. This allows the admin to access the data for all the students as each student name links to their overall quiz results page.
+
+### Admin Interface
+
+#### Admin Login
+![](images/Figure1.png)
+The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
+#### Admin Homepage
+![](images/Figure2.png)
+![](images/Figure2.png)
+They will be able to click on a course and be redirected to that course page (Figure 2). New courses can be created with the “New Course” button found at the bottom of the list of admin courses. (Figure 3). 
+#### Course Page
+![](images/Figure4.png)
+![](images/Figure5.png)
+For a specific course page, the admin will see a table of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one a time (Figure 5)
+#### Accessing Student Page
+The admin can click on a student where they will be redirected to the unique student page to view all the results for that student.
+#### Export Class Data
+![](images/Figure6.png)
+At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 6).
+
+### Student Interface
+
+#### Student "Login"
+![](images/Figure7.png)
+![](images/Figure8.png)
+The student will first see a page where they are prompted to enter their student ID (Figure 7). They will then be redirected to their own unique student page. The student will see all their quiz results and all their reflections (Figure 8). They are sorted so that the student can quickly see their most recent quiz results and reflections.
+#### Take/Retake Quiz
+![](images/Figure9.png)
+The student will also have a button that they can press to take/retake the quiz and it will redirect them to the quiz page (Figure 9). 
+#### Student Quiz Results
+![](images/Figure10.png)
+The view results button will redirect them to a page with detailed results showing the question and how they ranked their answers within the categories (Figure 10).
+#### New Reflection
+They will also have a button to submit a new reflection. The new reflection button will redirect them to a page where they will be able to write their reflection.

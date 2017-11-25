@@ -29,10 +29,12 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to admin_session_path, notice: 'Course was successfully created.' }
+        flash[:success] = 'Course was successfully created.'
+        format.html { redirect_to current_admin}
         format.json { render :show, status: :created, location: @course }
       else
-        format.html { render :new }
+        flash[:danger] = 'Course already exists.'
+        format.html { redirect_to new_admin_course_path(@course, admin_id: current_admin.id)}
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
@@ -43,7 +45,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to admin_course_path, notice: 'Course was successfully updated.' }
+        flash[:success] = 'Course was successfully updated.'
+        format.html { redirect_to admin_course_path}
         format.json { render :show, status: :ok, location: send(@course) }
       else
         format.html { render :edit }
@@ -57,7 +60,8 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to admin_url(current_admin.id), notice: 'Course was successfully destroyed.' }
+      flash[:success] = "Course was successfully destroyed."
+      format.html { redirect_to admin_url(current_admin.id)}
       format.json { head :no_content }
     end
   end
