@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
     end
 
     respond_to do |format|
-      if @course.save 
+      if @course.save and enrollment_created
         flash[:success] = 'Student was successfully added to course.'
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render :show, status: :created, location: @student }
