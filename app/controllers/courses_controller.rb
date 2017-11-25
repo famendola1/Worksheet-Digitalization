@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.save
         flash[:success] = 'Course was successfully created.'
-        format.html { redirect_to admin_session_path}
+        format.html { redirect_to current_admin}
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
