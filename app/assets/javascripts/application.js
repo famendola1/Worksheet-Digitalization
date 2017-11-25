@@ -38,9 +38,8 @@ $(document).ready(function() {
 
   // Javascript for submit button validation
   $(document).on('click', '#quizSubmit', function() {
-  		console.log("test1");
 		var questions = validate_form();
-		if( questions.size == 0 ) {
+		if(questions.size == 0 ) {
 		 	return;
 		 }
 		else {
@@ -61,20 +60,26 @@ $(document).ready(function() {
 	// Iterates through all answers and checks that they are ranked 
 	// Returns 0 if all are checked, otherwise returns first question that isn't finished
 	function validate_form() {
-		console.log("test1");
 		var numbers = new Set();
+		scroll = 0;
 		for (i = 1; i < 19; i++) {
 			for (j = 1; j < 5; j++) {
 				name = "q" + i + "a" + j;
 				if ($("input[name='" + name + "']:checked").length == 0) {
 					numbers.add(i);
-					console.log("test");
+					$("#q" + i).css("border", "2px solid red");
+					if (scroll == 0) {
+						var top = $('#q' + i).position().top;
+						$(window).scrollTop( top - 75); //Offset because header blocks some of screen
+						scroll = 1;
+					}
 				}
 			}
 		}
 		return numbers;
 	}
 
+	// Prevents arrow keys from moving radio button
 	$(document).on('click', 'input[type=radio]', function() {
 	    document.addEventListener("keydown", function (e) {
 		  if ([37].indexOf(e.keyCode) > -1) { // left
