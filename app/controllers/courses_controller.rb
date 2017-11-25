@@ -33,7 +33,8 @@ class CoursesController < ApplicationController
         format.html { redirect_to current_admin}
         format.json { render :show, status: :created, location: @course }
       else
-        format.html { render :new }
+        flash[:danger] = 'Course already exists.'
+        format.html { redirect_to new_admin_course_path(@course, admin_id: current_admin.id)}
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
