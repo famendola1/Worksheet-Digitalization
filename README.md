@@ -117,6 +117,7 @@ The students will be organized into classes created by the admin. This allows th
 #### Admin Login
 ![](images/Figure1.png)
 *Figure 1*
+
 The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
 #### Admin Homepage
 ![](images/Figure2.png)
