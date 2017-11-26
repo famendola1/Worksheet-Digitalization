@@ -51,10 +51,12 @@ We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handl
 |---------|------------|
 | Integer | id         |
 | String  | name       |
+| Integer | section    |
 | String  | semester   |
+| Integer | year       |
 | Integer | admin_id   |
 
-The id is the key attribute for a course and it makes each course unique. The course name and semester are for visual purposes. It allows the admin to view course names instead of an id, and the semester helps distinguish courses with the same name offered in different semesters. The admin_id is a way to relate the course to a specific admin. A course belongs to an admin and has many students through enrollments.
+The id is the key attribute for a course and it makes each course unique. The course name, section, semester, and year are for visual purposes. It allows the admin to view course names instead of an id, and the section, semester, and year help distinguish courses with the same name offered in the same semester or different semesters and years. The admin_id is a way to relate the course to a specific admin. A course belongs to an admin and has many students through enrollments.
 
 ### Student
 
@@ -87,7 +89,7 @@ Enrollments are used to represent the has_many through relationship that exists 
 | Integer | communicator |
 | String  | reflection   |
 
-The id uniquely identifies each quiz result from one another. Collaborator, challenger, communicator, and contributor store the calculated points for each of those categories from the quiz. The student_id is stored so that each quiz_result also knows about and is linked to the student it belongs to. Reflection holds the student's written repsonse to their quiz results. We chose to not make reflection its own model because it is just a form response and has no attributes. A quiz result belongs to a student andwill have 18 answer objects corresponding to how the quiz was answered.
+The id uniquely identifies each quiz result from one another. Collaborator, challenger, communicator, and contributor store the calculated points for each of those categories from the quiz. The student_id is stored so that each quiz_result also knows about and is linked to the student it belongs to. Reflection holds the student's written repsonse to their quiz results. We chose to not make reflection its own model because it is just a form response and has no attributes. A quiz result belongs to a student and will have 18 answer objects corresponding to how the quiz was answered.
 
 ### Answer
 
@@ -106,7 +108,7 @@ The id is the unique identifier of the each answer. The question is which questi
 ## Functionality
 
 ### Overview
-Our application will have a student interface and an admin interface. In the student interface, students have the ability to take the Parker Team Player Style Survey and see their own results. The Parker Team Player Survey poses 18 questions on problems that may occur in a team setting and provides four possible approaches to which the student will rank the four possible answers from most applicable to least applicable. These scores would then be totaled to return the team player category to which the student likely belongs: Communicator, Collaborator, Challenger, or Contributor. The results for a survey will have the students highest category and the score for each category. On each student’s dedicated page they can see all of their results, sorted by most recent, and write or view a corresponding reflection for each. In the admin interface, the admin will have the ability to view all the results from students in their different classes, and they will have the ability to export all the student data for a specific class in a csv file.
+Our application will have a student interface and an admin interface. In the student interface, students have the ability to take the Parker Team Player Style Survey and see their own results. The Parker Team Player Survey poses 18 questions on problems that may occur in a team setting and provides four possible approaches to which the student will rank the four possible answers from most applicable to least applicable. These scores are then totaled to return the team player category to which the student likely belongs: Communicator, Collaborator, Challenger, or Contributor. The results for a survey will have the students highest category and the score for each category. On each student’s dedicated page they can see all of their results, sorted by most recent, and write or view a corresponding reflection for each. In the admin interface, the admin will have the ability to view all the results from students in their different classes, and they will have the ability to export all the student data for a specific class in a csv file.
 
 The students will be organized into classes created by the admin. This allows the admin to view the students in a specific class. The students will not have the ability to create a class or put other students, including themselves, into a class. This feature will only be implemented in the admin interface. The class will have the names of the students that belong to the class. This allows the admin to access the data for all the students as each student name links to their overall quiz results page.
 
@@ -114,6 +116,7 @@ The students will be organized into classes created by the admin. This allows th
 
 #### Admin Login
 ![](images/Figure1.png)
+*Figure 1*
 The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
 #### Admin Homepage
 ![](images/Figure2.png)
