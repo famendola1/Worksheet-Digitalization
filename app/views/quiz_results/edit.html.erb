@@ -1,6 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-
 <%= form_for @quiz_result, url: {:action => "update"}, student_id: @quiz_result.student_id, result_id: @quiz_result.result_id do |form| %>
   <% if @quiz_result.errors.any? %>
     <div id="error_explanation">
