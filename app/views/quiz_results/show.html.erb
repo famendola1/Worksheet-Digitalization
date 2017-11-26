@@ -11,10 +11,9 @@
 <% challenger_responses = ["raise questions about our goals or methods", "am willing to disagree with him or her when necessary", "am too direct in communicating with other team members", "press for an honest discussion of the differences", "candid", "self-righteous", "press for a candid discussion of our problems", "question some aspect of the team’s work", "a nitpicker", "a willingness to ask tough questions", "ask pointed questions about our goals and methods", "dishonest because they are not able to be as confrontational as I am", "bring out diverse ideas and challenge assumptions", "an open and candid assessment of the issues", "play the devil’s advocate far too long", "independent", "honest and authentic", "object to team action with which they disagree"] %>
 
 <h1>Name: <%= @quiz_result.student.name %></h1>
-<h3> Created at:
-<%= @quiz_result.created_at %> </h3>
 <% offset = 0 %>
 <h2> Summary </h2>
+<h3> Submitted: <%= @quiz_result.created_at.strftime('%m-%d-%Y %r %Z') %></h3>
 <div class="table-responsive" >
     <table class="table">
       <thead>
