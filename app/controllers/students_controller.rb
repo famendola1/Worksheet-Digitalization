@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
     end
 
     respond_to do |format|
-      if @course.save 
+      if @course.save and enrollment_created
         flash[:success] = 'Student was successfully added to course.'
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render :show, status: :created, location: @student }
@@ -98,7 +98,7 @@ class StudentsController < ApplicationController
   def import
     @course = Course.find(params[:course_id])
     if Student.import(params[:file], @course) == 1
-      flash[:success] = 'Successfullt imported students'
+      flash[:success] = 'Successfully imported students'
     else
       flash[:danger] = "Error occured during import. Please check your CSV file."
     end
