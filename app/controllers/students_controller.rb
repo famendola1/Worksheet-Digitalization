@@ -98,7 +98,7 @@ class StudentsController < ApplicationController
   def import
     @course = Course.find(params[:course_id])
     if Student.import(params[:file], @course) == 1
-      flash[:success] = 'Successfullt imported students'
+      flash[:success] = 'Successfully imported students'
     else
       flash[:danger] = "Error occured during import. Please check your CSV file."
     end
