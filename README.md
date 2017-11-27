@@ -31,6 +31,7 @@ First you will need to clone the project and go into its directory.
 
 Next, run the following commands:
 * ```bundle install```, installs the necessary Ruby gems if not installed
+* ```rake db:migrate```, migrates the most recent version of the database
 * ```rake assets:precompile```, precomiles javascript, stylesheets, etc.
 
 Now, to use the app, run ```rails server``` and navigate to localhost:3000 in your browser of choice.
