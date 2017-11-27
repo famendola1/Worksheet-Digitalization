@@ -4,10 +4,10 @@
   <%= form_for(:student, url: students_path, method: :get) do |f| %>
 
 
-    <div class="form-group">
-      <%= f.number_field :id, min: 0 %>
+    <div class="col-md-offset-4 col-md-4">
+      <%= f.number_field :id, min: 0, class: "form-control" %>
+      <%= f.submit "Go", class: "btn btn-primary", style: "margin-top:1rem" %>
     </div>
-    <div><%= f.submit "Go", class: "btn btn-primary" %></div>
   <% end %>
 </center>
 

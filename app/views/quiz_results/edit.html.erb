@@ -45,10 +45,10 @@
   <div class="field">
     <%= form.label :reflection %>
     <br>
-    <%= form.text_area :reflection, result_id: @quiz_result.result_id, rows: "50", cols: "120" %>
+    <%= form.text_area :reflection, result_id: @quiz_result.result_id, rows: "50", cols: "120", class: "form-control", style: 'width: 80%; display: block' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Update Reflection", class: "btn btn-success" %>
+  <div class="row">
+    <%= form.submit "Update Reflection", class: "btn btn-success", style: "margin-top:1rem"  %>
   </div>
 <% end %>

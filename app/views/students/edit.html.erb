@@ -1,15 +1,16 @@
 <h1>Update Student</h1>
 
-<%= form_for @student, url: {:action => "update"}, student_id: @student_id do |form| %>
+<%= form_for @student, url: {:action => "update"}, class: "form-horizontal", student_id: @student_id do |form| %>
 
-  <div class="actions">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: "control-label col-md-2" %>
+    <div class="col-md-4">
+    <%= form.text_field :name, class: "form-control" %>
+	</div>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Update Student" %>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= form.submit "Update Student", class: "btn btn-primary" %>
   </div>
+</div>
 <% end %>
-
-<%= link_to 'Show', @student %> 

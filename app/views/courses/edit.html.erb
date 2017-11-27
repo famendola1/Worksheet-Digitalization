@@ -1,30 +1,37 @@
 <h1>Update your Course</h1>
 
-<%= form_for @course, url: {:action => "update"}, admin_id: @course.admin_id, course_id: @course.course_id do |form| %>
+<%= form_for @course, url: {:action => "update"}, class: "form-horizontal", admin_id: @course.admin_id, course_id: @course.course_id do |form| %>
 
-  <div class="actions">
-    <%= form.label :course_name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="actions">
-    <%= form.label :section %>
-    <%= form.number_field :section, min: 0%>
+<div class="form-group row">
+  <%= form.label :course_name, class: "control-label col-md-2" %>
+  <div class="col-md-4">
+    <%= form.text_field :name, class: "form-control" %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.label :semester %>
-    <%= form.select :semester, ["Fall", "Spring"] %>
+<div class="form-group row">
+  <%= form.label :section, class: "control-label col-md-2" %>
+  <div class="col-md-4">
+    <%= form.number_field :section, min: 0, class: "form-control" %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.label :year %>
-    <%= form.number_field :year, min: 0 %>
+<div class="form-group row">
+  <%= form.label :semester, class: "control-label col-md-2" %>
+  <div class="col-md-4">
+    <%= form.select(:semester, ["Fall", "Spring"], {}, { :class => 'form-control' } ) %>
   </div>
-
-  <div class="actions">
-    <%= form.submit "Update Course" %>
+</div>
+<div class="form-group row">
+  <%= form.label :year, class: "control-label col-md-1" %>
+  <div class="col-md-4">
+    <%= form.number_field :year, min: 0, class: "form-control" %>
   </div>
+</div>
+<div class="form-group row">
+  <div class="col-md-4">
+    <%= form.submit "Update Course", class: "btn btn-primary" %>
+  </div>
+</div>
 <% end %>
-
-<%= link_to 'Show', admin_course_path(@course, @course.admin.id) %>
