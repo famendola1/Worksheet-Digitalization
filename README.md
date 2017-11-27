@@ -26,6 +26,7 @@ The student will first see a page where they are prompted to enter their student
 ## Run on localhost
 First you will need to clone the project and go into its directory.  
 ```git clone https://github.com/famendola1/Worksheet-Digitalization.git```
+
 ```cd Worksheet-Digitalization```
 
 Next, run the following commands:
@@ -125,6 +126,7 @@ The admin will login after creating an account with their email and password (Fi
 *Figure 2*
 
 ![](images/Figure3.png)
+
 *Figure 3*
 
 They will be able to click on a course and be redirected to that course page (Figure 2). New courses can be created with the “New Course” button found at the bottom of the list of admin courses. (Figure 3). 
@@ -133,6 +135,7 @@ They will be able to click on a course and be redirected to that course page (Fi
 *Figure 4*
 
 ![](images/Figure5.png)
+
 *Figure 5*
 
 For a specific course page, the admin will see a list of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one at a time (Figure 5)
