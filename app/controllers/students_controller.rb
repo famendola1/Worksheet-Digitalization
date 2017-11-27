@@ -78,7 +78,8 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student }
         format.json { render :show, status: :ok, location: @student }
       else
-        format.html { render :edit }
+        flash[:danger] = 'Student was not updated. A student with that name already exists.'
+        format.html { redirect_to edit_student_path(@student.student_id) }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
