@@ -25,7 +25,8 @@ The student will first see a page where they are prompted to enter their student
 
 ## Run on localhost
 First you will need to clone the project and go into its directory.  
-```git clone https://github.com/famendola1/Worksheet-Digitalization.git && cd Worksheet-Digitalization```
+```git clone https://github.com/famendola1/Worksheet-Digitalization.git```
+```cd Worksheet-Digitalization```
 
 Next, run the following commands:
 * ```bundle install```, installs the necessary Ruby gems if not installed
@@ -121,29 +122,47 @@ The students will be organized into classes created by the admin. This allows th
 The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
 #### Admin Homepage
 ![](images/Figure2.png)
-![](images/Figure2.png)
+*Figure 2*
+
+![](images/Figure3.png)
+*Figure 3*
+
 They will be able to click on a course and be redirected to that course page (Figure 2). New courses can be created with the “New Course” button found at the bottom of the list of admin courses. (Figure 3). 
 #### Course Page
 ![](images/Figure4.png)
+*Figure 4*
+
 ![](images/Figure5.png)
-For a specific course page, the admin will see a table of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one a time (Figure 5)
+*Figure 5*
+
+For a specific course page, the admin will see a list of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one at a time (Figure 5)
 #### Accessing Student Page
-The admin can click on a student where they will be redirected to the unique student page to view all the results for that student.
+The admin can click on a student and they will be redirected to the unique student page to view all the results for that student.
 #### Export Class Data
 ![](images/Figure6.png)
+*Figure 6*
+
 At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 6).
 
 ### Student Interface
 
 #### Student "Login"
 ![](images/Figure7.png)
+*Figure 7*
+
 ![](images/Figure8.png)
+*Figure 8*
+
 The student will first see a page where they are prompted to enter their student ID (Figure 7). They will then be redirected to their own unique student page. The student will see all their quiz results and all their reflections (Figure 8). They are sorted so that the student can quickly see their most recent quiz results and reflections.
 #### Take/Retake Quiz
 ![](images/Figure9.png)
+*Figure 9*
+
 The student will also have a button that they can press to take/retake the quiz and it will redirect them to the quiz page (Figure 9). 
 #### Student Quiz Results
 ![](images/Figure10.png)
+*Figure 10*
+
 The view results button will redirect them to a page with detailed results showing the question and how they ranked their answers within the categories (Figure 10).
 #### New Reflection
 They will also have a button to submit a new reflection. The new reflection button will redirect them to a page where they will be able to write their reflection.
