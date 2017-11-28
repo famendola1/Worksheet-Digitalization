@@ -21,8 +21,8 @@ class Student < ApplicationRecord
       
       all.each do |s|
         # relevant student attributes
-        student = [s.id, s.name, s.category]
         s.quiz_results.each do |q|
+          student = [s.id, s.name, s.category]
           # relevant quiz_result attributes
           student.concat [q.id, q.created_at, s.get_category(q), q.contributor, q.collaborator, q.communicator, q.challenger]
           q.answers.order("question ASC").each do |a|
