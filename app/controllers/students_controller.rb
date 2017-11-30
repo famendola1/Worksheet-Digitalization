@@ -42,12 +42,15 @@ class StudentsController < ApplicationController
   def create
     enrollment_created = false
     @course = Course.find(params[:course_id])
-    if !Student.exists?(:student_id => student_params[:student_id])
+
+    if check_id_and_name(student_params)
+      flash[:danger] = get_error_message(student_params)
+    elsif @course.enrollments.exists?(:student_id => student_params[:student_id]) 
+      flash[:danger] = 'Student was not added to course. Student is already enrolled in course.'
+    elsif !Student.exists?(:student_id => student_params[:student_id])
       @student = Student.create( student_params ) 
       @course.enrollments.create( :student_id => @student.student_id )
       enrollment_created = true
-    elsif check_id_and_name(student_params)
-       flash[:danger] = get_name_error_message(student_params)
     else
       @student = Student.find_by(student_params)
       @course.enrollments.create( :student_id => @student.student_id )
@@ -59,11 +62,8 @@ class StudentsController < ApplicationController
         flash[:success] = 'Student was successfully added to course.'
         format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
         format.json { render :show, status: :created, location: @student }
-      elsif !enrollment_created
-        format.html {redirect_to new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id)  }
       else
-        flash[:danger] = 'Student was not added to course. Student id or name already exists.'
-        format.html { redirect_to admin_course_path(@course, admin_id: @course.admin_id)}
+        format.html {redirect_to new_admin_course_student_path(@student, course_id: @course.id, admin_id: current_admin.id)  }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end

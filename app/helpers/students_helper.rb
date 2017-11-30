@@ -25,11 +25,16 @@ module StudentsHelper
     	end
     end
 
-    def get_name_error_message(student_params)
-        id = student_params[:student_id]
-        student = Student.find_by(:student_id => student_params[:student_id])
-        name = student.name
-        error = "The Student id, " + id.to_s + ", already exists. " + name + " corresponds to that id."
+    def get_error_message(student_params)
+        if Student.exists?(:student_id => student_params[:student_id]) #Tell user the corresponding name
+            id = student_params[:student_id]
+            student = Student.find_by(:student_id => student_params[:student_id])
+            name = student.name
+            error = "There already exists a student with id, " + id.to_s + ". " + name + " corresponds to that id. Please input the student with correct name and id to add to course."
+        else #Name is already taken
+            name = student_params[:name]
+            error = "There already exists a student with the name, " + name +". Change name of student to be able to add to course."
+        end
         return error
     end
 
@@ -38,5 +43,4 @@ module StudentsHelper
         student2 = Student.find_by(:name => student_params[:name])
         return student1 != student2
     end
-
 end
