@@ -48,7 +48,11 @@
       <p><b>No Reflection</b></p>
     <% end %>
   <% end %>
-  <%= link_to "View Results", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
-  <hr>
+  <% if current_admin %> 
+    <%= link_to "View Results", student_quiz_result_path(r, student_id: @student.student_id), class: 'btn btn-info' %>
+  <% end %>
+<p>
+  <div style="border-top: 2px double;"></div>
+</p>
 <% end %>
 <p style="padding-bottom: 30px;"">

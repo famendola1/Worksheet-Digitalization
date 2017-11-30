@@ -15,8 +15,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-right">
         <% if admin_signed_in? %>
-            <li>
-              <%= link_to "Hi, #{current_admin.name}" %>
+            <li style= "color: #9d9d9d; padding: 15px 15px; line-height: 20px;" >
+              <%= "Hi, " + current_admin.name %>
             </li>
             <li>
               <%= link_to "Logout", destroy_admin_session_path, method: :delete	  %>
