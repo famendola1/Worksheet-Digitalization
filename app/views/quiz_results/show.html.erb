@@ -1,3 +1,8 @@
+<style>
+    .line { border-left:1px solid #A0A0A0; padding:20px; }
+</style>
+<p id="notice"><%= notice %></p>
+
 
 <p id="notice"><%= notice %></p>
 <% questions = ["1. During team meetings, I usually", "2. In relating to the team leader, I:", "3. Under stress, I sometimes:", "4. When conflicts arise on the team, I usually:", "5. Other team members usually see me as:", "6. At times, I am:", "7. When things go wrong on the team, I usually:", "8. A risky team contribution for me is to:", "9. Sometimes other team members see me as:", "10. I believe team problem solving requires:", "11. When a new team is forming, I usually:", "12. At times, I make other people feel:", "13. I believe the role of the team leader is to:", "14. I believe team decisions should be based on:", "15. Sometimes I:", "16. People have often described me as:", "17. Most of the time, I am:", "18. In relating to other team members, at times I get annoyed because they don’t:"] %>
@@ -137,15 +142,15 @@
           <%end%> 
 
         <tr>
-          <td> <%= questions[offset] %> </td>
-          <td><%= most_cat %> </td> 
-          <td><%= most %> </td> 
-           <td><%= mod_cat %> </td> 
+          <td class = "line"> <%= questions[offset] %> </td>
+          <td class = "line"> <%= most_cat %> </td> 
+          <td> <%= most %> </td> 
+           <td class = "line"><%= mod_cat %> </td> 
           <td><%= moderately %> </td>
-           <td><%= slight_cat %> </td> 
+           <td class = "line"><%= slight_cat %> </td> 
           <td><%= slightly %>  </td>
-            <td><%= least_cat %> </td> 
-          <td><%= least %>  </td>
+            <td class = "line"><%= least_cat %> </td> 
+          <td> <%= least %>  </td>
         </tr>
         <% offset += 1 %>
     <%end %>
