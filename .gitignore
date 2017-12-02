@@ -23,3 +23,6 @@
 .byebug_history
 
 .htaccess
+
+# Ignore application configuration
+/config/application.yml
