@@ -64,6 +64,7 @@ $(document).ready(function() {
 		var numbers = new Set();
 		scroll = 0;
 		for (i = 1; i < 19; i++) {
+			$("#q" + i).css("border", "2px solid white");
 			for (j = 1; j < 5; j++) {
 				name = "q" + i + "a" + j;
 				if ($("input[name='" + name + "']:checked").length == 0) {
