@@ -1,12 +1,29 @@
+
+
 <% flash.each do |key, value| %>
-  <% if key == "alert" %>
-    <% key = "danger" %>
-  <% elsif key == "notice" %>
-    <% key = "success" %>
-  <% end %>
-  
-  <div class="alert alert-<%= key %>">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <%= value %>
-  </div>
+    <% if value.class == Array %>
+        <div class="<%= flash_class(key) %>">
+            <a href="#" type="button" class="close" data-dismiss="alert">×</a>
+            <% value.each do |message| %>  
+                <%= message %>
+                </br>
+            <% end %>
+        </div>
+    <% else %>
+    	<% if key == "alert" %>
+    		<% key = "danger" %>
+ 		<% elsif key == "notice" %>
+    		<% key = "success" %>
+  		<% end %>
+
+        <div class="alert alert-<%= key %>">
+            <a href="#" type="button" class="close" data-dismiss="alert">×</a>
+            <%= value %>
+        </div>
+    <% end %>
 <% end %>
+
+
+
+
+

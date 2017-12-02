@@ -1,11 +1,13 @@
 <style>
     .line { border-left:1px solid #A0A0A0; padding:20px; }
+    .line2 { border-right:1px solid #A0A0A0; padding:20px; }
+    .line3 { border-bottom:1px solid #A0A0A0; padding:20px; }
 </style>
 <p id="notice"><%= notice %></p>
 
 
 <p id="notice"><%= notice %></p>
-<% questions = ["1. During team meetings, I usually", "2. In relating to the team leader, I:", "3. Under stress, I sometimes:", "4. When conflicts arise on the team, I usually:", "5. Other team members usually see me as:", "6. At times, I am:", "7. When things go wrong on the team, I usually:", "8. A risky team contribution for me is to:", "9. Sometimes other team members see me as:", "10. I believe team problem solving requires:", "11. When a new team is forming, I usually:", "12. At times, I make other people feel:", "13. I believe the role of the team leader is to:", "14. I believe team decisions should be based on:", "15. Sometimes I:", "16. People have often described me as:", "17. Most of the time, I am:", "18. In relating to other team members, at times I get annoyed because they don’t:"] %>
+<% questions = ["1. During team meetings, I usually:", "2. In relating to the team leader, I:", "3. Under stress, I sometimes:", "4. When conflicts arise on the team, I usually:", "5. Other team members usually see me as:", "6. At times, I am:", "7. When things go wrong on the team, I usually:", "8. A risky team contribution for me is to:", "9. Sometimes other team members see me as:", "10. I believe team problem solving requires:", "11. When a new team is forming, I usually:", "12. At times, I make other people feel:", "13. I believe the role of the team leader is to:", "14. I believe team decisions should be based on:", "15. Sometimes I:", "16. People have often described me as:", "17. Most of the time, I am:", "18. In relating to other team members, at times I get annoyed because they don’t:"] %>
 
 <% contributor_responses = ["provide the team with technical data or information", "offer advice based upon my area of expertise", "lose patience with the need to get involved in discussions", "provide reasons why one side or the other is correct", "factual", "shortsighted", "work hard to provide more and better information", "push the team to set higher performance standards", "a perfectionist", "good solid data", "want to know what is expected of me", "guilty because they don’t live up to my standards", "ensure the efficient solution of business problems", "the weight of the evidence", "fail to see the importance of effective team process", "dependable", "responsible and hardworking", "complete their team assignments on time"] %>
 
@@ -142,15 +144,15 @@
           <%end%> 
 
         <tr>
-          <td class = "line"> <%= questions[offset] %> </td>
-          <td class = "line"> <%= most_cat %> </td> 
-          <td> <%= most %> </td> 
-           <td class = "line"><%= mod_cat %> </td> 
-          <td><%= moderately %> </td>
-           <td class = "line"><%= slight_cat %> </td> 
-          <td><%= slightly %>  </td>
-            <td class = "line"><%= least_cat %> </td> 
-          <td> <%= least %>  </td>
+          <td class = "line line3"> <%= questions[offset] %> </td>
+          <td class = "line line3"> <%= most_cat %> </td> 
+          <td class ="line3"> <%= most %> </td> 
+           <td class = "line line3"><%= mod_cat %> </td> 
+          <td class = "line3"><%= moderately %> </td>
+           <td class = "line line3"><%= slight_cat %> </td> 
+          <td class ="line3"><%= slightly %>  </td>
+            <td class = "line line3"><%= least_cat %> </td> 
+          <td class = "line2 line3"> <%= least %>  </td>
         </tr>
         <% offset += 1 %>
     <%end %>
