@@ -43,6 +43,14 @@ Open up the file, ```config/application.yml``` and create a key-value pair for i
 
 Now, to use the app, run ```rails server``` and navigate to localhost:3000 in your browser of choice.
 
+## Additional Admin Information
+### Admin Verification Code
+Currently there is one global code for all the admins.
+
+### Student Interactions
+Admins can add other students they didn't create if they know their id and name. 
+Deleting a student means removing them from the course, the student still exists. This means a student can exist without being in any courses if they are deleted from all of them.
+
 ## Architecture
 
 ### Admin Simplified
@@ -130,49 +138,50 @@ The students will be organized into classes created by the admin. This allows th
 ![](images/Figure2.png)
 *Figure 2*
 
-The student will first see a page where they are prompted to enter their student ID (Figure 7). They will then be redirected to their own unique student page. The student will see all their quiz results and all their reflections (Figure 8). They are sorted so that the student can quickly see their most recent quiz results and reflections.
+The student will first see a page where they are prompted to enter their student ID (Figure 1). They will then be redirected to their own unique student page where all their quiz results and all their reflections, sorted by most recent quiz results and reflections, is displayed (Figure 2). 
 #### Take/Retake Quiz
 ![](images/Figure3.png)
 *Figure 3*
 
-The student will also have a button that they can press to take/retake the quiz and it will redirect them to the quiz page (Figure 9). 
-#### Student Quiz Results
-![](images/Figure4.png)
-*Figure 4*
+The student will be able to take/retake the quiz with the "Take Quiz" button (Figure 2). It will redirect them to the quiz page (Figure 3). 
 
-The view results button will redirect them to a page with detailed results showing the question and how they ranked their answers within the categories (Figure 10).
 #### New Reflection
-They will also have a button to submit a new reflection. The new reflection button will redirect them to a page where they will be able to write their reflection.
+Under each quiz result there is a button, "Add Reflection," that allows students to submit a reflection. It redirects them to a page where they will be able to write their reflection. After a reflection is submitted, the button changes to "Update Reflection" and allows students to edit their reflection.  
 
 ### Admin Interface
 
 #### Admin Login
+![](images/Figure4.png)
+*Figure 4*
+
+After creating an account with an email and password and correct invitation code, the admin will be able to login to their account (Figure 1). From there, they will then be redirected to the admin home page. #### Admin Homepage
 ![](images/Figure5.png)
 *Figure 5*
 
-The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
-#### Admin Homepage
 ![](images/Figure6.png)
-*Figure 6*
 
+*Figure 5*
+
+The admin home page displays a list of all the admin's courses. Clicking on a course name will redirect to the specific course page (Figure 5). New courses can be created with the “New Course” button found at the bottom of the list of admin courses (Figure 6). Existing courses can be edited with the "Edit" button.  
+#### Course Page
 ![](images/Figure7.png)
-
 *Figure 7*
 
-They will be able to click on a course and be redirected to that course page (Figure 2). New courses can be created with the “New Course” button found at the bottom of the list of admin courses. (Figure 3). 
-#### Course Page
 ![](images/Figure8.png)
+
 *Figure 8*
 
-![](images/Figure9.png)
-
-*Figure 9*
-
-For a specific course page, the admin will see a list of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one at a time (Figure 5)
+For each specific course page, a table of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file containing the name and id of a student or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 #### Accessing Student Page
-The admin can click on a student and they will be redirected to the unique student page to view all the results for that student.
+The admin can click on a student where they will be redirected to the unique student page to view all the results and reflections for that student. It looks very similar to Figure 2 but instead of a Add Reflection button there is an View Results button.
+
+#### Detailed Quiz Results
+![](images/Figure9.png)
+*Figure 9*
+The view results button will redirect the admin to a page with the summary of that quiz, detailed results of how each questions was asked, how they were ranked (Figure 9) and the reflection.
+
 #### Export Class Data
 ![](images/Figure10.png)
 *Figure 10*
 
-At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 6).
+At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 10).
