@@ -149,7 +149,7 @@ The student will first see a page where they are prompted to enter their student
 The student will be able to take/retake the quiz with the "Take Quiz" button (Figure 2). It will redirect them to the quiz page (Figure 3). 
 
 #### New Reflection
-Under each quiz result there is a button, "Add Reflection," that allows students to submit a reflection. It redirects them to a page where they will be able to write their reflection. After a reflection is submitted, the button changes to "Update Reflection" and allows students to edit their reflection.  
+Under each quiz result there is a button, "Add Reflection," that allows students to submit a reflection. It redirects them to a page where they can write their reflection. After a reflection is submitted, the button changes to "Update Reflection" and allows students to edit their reflection.  
 
 ### Admin Interface
 
@@ -157,7 +157,8 @@ Under each quiz result there is a button, "Add Reflection," that allows students
 ![](images/Figure4.png)
 <p align="center"> <i> Figure 4 </i> </p>
 
-After creating an account with an email and password and correct invitation code, the admin will be able to login to their account (Figure 1). From there, they will then be redirected to the admin home page. #### Admin Homepage
+After creating an account with an email and password and correct invitation code, the admin can then login to their account (Figure 1). From there, they will then be redirected to the admin home page. 
+#### Admin Homepage
 ![](images/Figure5.png)
 <p align="center"> <i> Figure 5 </i> </p>
 
