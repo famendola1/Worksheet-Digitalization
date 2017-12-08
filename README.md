@@ -57,6 +57,8 @@ Currently there is one global code for all the admins.
 Admins can add students to a course even if they did not create the student. They can add the student if they know their ID and name. 
 Deleting a student means removing them from the course, which means that the student still exists. This means a student can exist even if they have been deleted from all courses. The student can still be added to a course again, because there student data still exists.
 
+### Import and Export
+You can find examples of a file to import and an example exported file in the examples folder. 
 ## Architecture
 
 ### Admin Simplified
@@ -175,24 +177,24 @@ The admin home page displays a list of all the admin's courses. Clicking on a co
 
 <p align="center"> <i> Figure 8 </i> </p>
 
-For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted below or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
+For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted in figure 9 or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 
 ![](images/template.PNG)
-<p align="center"> <i> CSV Template </i> </p>
+<p align="center"> <i> Figure 9 </i> </p>
 
 #### Accessing Student Page
 The admin can click on a student where they will be redirected to the unique student page to view all the results and reflections for that student. It looks very similar to Figure 2 but instead of a Add Reflection button there is an View Results button.
 
 #### Detailed Quiz Results
 ![](images/Figure9.png)
-<p align="center"> <i> Figure 9 </i> </p>
-The view results button will redirect the admin to a page with the summary of that quiz, detailed results of how each questions was asked, how they were ranked (Figure 9) and the reflection.
+<p align="center"> <i> Figure 10 </i> </p>
+The view results button will redirect the admin to a page with the summary of that quiz, detailed results of how each questions was asked, how they were ranked (Figure 10) and the reflection.
 
 #### Export Class Data
 ![](images/Figure10.png)
-<p align="center"> <i> Figure 10 </i> </p>
+<p align="center"> <i> Figure 11 </i> </p>
 
-At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 10).
+At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 11).
 
 ## Contributing
 
