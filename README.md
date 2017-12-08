@@ -23,6 +23,12 @@ The student will first see a page where they are prompted to enter their student
 * [Ruby 2.3+](https://www.ruby-lang.org/en/)
 * [Rails 5+](http://rubyonrails.org)
 
+## Gems
+
+* devise: We used the ruby gem devise to handle the admin data,collected through a form on the sign up page and later stored in the database with columns that are predefined by devise. 
+* bootstrap: We used the ruby gem bootstrap to design and improve our site visually.
+* figaro: We used the ruby gem figaro to store the admin invitation code.
+
 ## Run on localhost
 First you will need to clone the project and go into its directory.  
 ```git clone https://github.com/famendola1/Worksheet-Digitalization.git```
@@ -48,8 +54,8 @@ Now, to use the app, run ```rails server``` and navigate to localhost:3000 in yo
 Currently there is one global code for all the admins.
 
 ### Student Interactions
-Admins can add other students they didn't create if they know their id and name. 
-Deleting a student means removing them from the course, the student still exists. This means a student can exist without being in any courses if they are deleted from all of them.
+Admins can add students to a course even if they did not create the student. They can do add the student if they know their id and name. 
+Deleting a student means removing them from the course, which means that the student still exists. This means a student can exist without being in any courses. The students can still be added to a course because there student data still exists.
 
 ## Architecture
 
@@ -185,3 +191,22 @@ The view results button will redirect the admin to a page with the summary of th
 *Figure 10*
 
 At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 10).
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: ```git checkout -b my-new-feature```
+3. Commit your changes: ```git commit -am 'Add some feature'```
+4. Push to the branch: ```git push origin my-new-feature```
+5. Submit a pull request :D
+
+## Known Issues
+
+### Import Students
+    * Importing students with an invalid file type will cause rails to display an error page.
+        - This can be solved by using javascript to check the file type before we try to import it.
+    * Importing students with a csv that doesn't have the correct headers will cause rails to display an error page.
+        - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
+    * Issues on Firefox
+        - The javascript validation does not work for the quiz on Firefox
+
