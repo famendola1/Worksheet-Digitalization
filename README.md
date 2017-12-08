@@ -58,7 +58,7 @@ Admins can add students to a course even if they did not create the student. The
 Deleting a student means removing them from the course, which means that the student still exists. This means a student can exist even if they have been deleted from all courses. The student can still be added to a course again, because there student data still exists.
 
 ### Import and Export
-You can find examples of a file to import and an example exported file in the example file. 
+You can find examples of a file to import and an example exported file in the examples folder. 
 ## Architecture
 
 ### Admin Simplified
