@@ -139,15 +139,15 @@ The students will be organized into classes created by the admin. This allows th
 
 #### Student "Login"
 ![](images/Figure1.png)
-*Figure 1*
+<p align="center"> *Figure 1* </p>
 
 ![](images/Figure2.png)
-*Figure 2*
+<p align="center"> *Figure 2* </p>
 
 The student will first see a page where they are prompted to enter their student ID (Figure 1). They will then be redirected to their own unique student page where all their quiz results and all their reflections, sorted by most recent quiz results and reflections, is displayed (Figure 2). 
 #### Take/Retake Quiz
 ![](images/Figure3.png)
-*Figure 3*
+<p align="center"> *Figure 3* </p>
 
 The student will be able to take/retake the quiz with the "Take Quiz" button (Figure 2). It will redirect them to the quiz page (Figure 3). 
 
@@ -158,24 +158,24 @@ Under each quiz result there is a button, "Add Reflection," that allows students
 
 #### Admin Login
 ![](images/Figure4.png)
-*Figure 4*
+<p align="center"> *Figure 4* </p>
 
 After creating an account with an email and password and correct invitation code, the admin will be able to login to their account (Figure 1). From there, they will then be redirected to the admin home page. #### Admin Homepage
 ![](images/Figure5.png)
-*Figure 5*
+<p align="center"> *Figure 5* </p>
 
 ![](images/Figure6.png)
 
-*Figure 5*
+<p align="center"> *Figure 6* </p>
 
 The admin home page displays a list of all the admin's courses. Clicking on a course name will redirect to the specific course page (Figure 5). New courses can be created with the “New Course” button found at the bottom of the list of admin courses (Figure 6). Existing courses can be edited with the "Edit" button.  
 #### Course Page
 ![](images/Figure7.png)
-*Figure 7*
+ <p align="center"> *Figure 7* </p>
 
 ![](images/Figure8.png)
 
-*Figure 8*
+<p align="center"> *Figure 8* </p>
 
 For each specific course page, a table of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file containing the name and id of a student or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 #### Accessing Student Page
@@ -183,12 +183,12 @@ The admin can click on a student where they will be redirected to the unique stu
 
 #### Detailed Quiz Results
 ![](images/Figure9.png)
-*Figure 9*
+<p align="center"> *Figure 9* </p>
 The view results button will redirect the admin to a page with the summary of that quiz, detailed results of how each questions was asked, how they were ranked (Figure 9) and the reflection.
 
 #### Export Class Data
 ![](images/Figure10.png)
-*Figure 10*
+<p align="center"> *Figure 10* </p>
 
 At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 10).
 
