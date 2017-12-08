@@ -2,19 +2,19 @@
 
 ## Description
 
-This application will allow students to digitally take the Parker Team Player Style quiz and see their score for each Team Player category. The students can then write a reflection of their results. Students will be able to take the quiz multiple times and write a reflection. Students will be able to view their own results and reflections for all the quizzes they have taken. Administrators can organize students to see all the results of one class. The administrator will also be able to export the results of each class. 
+This application allows students to digitally take the Parker Team Player Style quiz and see their score for each Team Player category. The students can then write a reflection of their results. Students are able to take the quiz multiple times and write a reflection. Students can view their own results and reflections for all the quizzes they have taken. Administrators can organize students to see all the results of one class. The administrator can also export the results of each class. 
 
 ## Minimum Viable Product
 
-Our application will have a student interface and an admin interface. In the student interface students have the ability to take the quiz and to see their own results. On each student’s dedicated page they can see all of their results, sorted by most recent, and corresponding reflections written by them. In the admin interface, the admin will have the ability to view all the results from students in different classes, and they will have the ability to export all the student data for a specific class.
+Our application has a student interface and an admin interface. In the student interface students have the ability to take the quiz and to see their own results. On each student’s dedicated page they can see all of their results, sorted by most recent, and corresponding reflections written by them. In the admin interface, the admin has the ability to view all the results from students in different classes, and they have the ability to export all the student data for a specific class.
  
-The students will be organized into classes created by the admin. This allows the admin to view the students in a specific class. The students will not have the ability to create a class or put other students, including themselves, into a class. This feature will only be implemented in the admin interface. The class will have the name of the students that belong to the class. This allows the admin to access the data for all the students.
+The students can be organized into courses created by the admin. This allows the admin to view the students in a specific class. The students do not have the ability to create a class or put other students, including themselves, into a class. This feature is only implemented in the admin interface. The course has a list of the names of the students that belong to the course. This allows the admin to access the data for all the students.
 
 **Admin Interface**  
-The admin will login after creating an account with their email and password. They will then be redirected to a page that has all their classes. They will be able to click on a class and be redirected to that class page. They will also be able to click somewhere on the page with all the classes, to create a new class. For a specific class page, the admin will see a table of all the names of the students in the class with their most recent quiz result and most recent reflection. They will also be able to import new students and manually add new students to that class page. The admin can then click on a student and they will be redirected to the unique student page where they can see all the results for that student. The admin will also be able to click a button to export all the data for a specific class. 
+The admin can login after creating an account with their email and password. They are then redirected to a page that has all their courses. They can click on a course which redirects them to that specific course page. They can also click the "New Course" button, to create a new course. For a specific course page, the admin sees a list of all the names of the students in the course. They can import new students and manually add new students to a course. The admin can then click on a student and they will be redirected to the unique student page where they can see all the results for that student. The admin can also click the "Export" button to export all the data for a specific course. 
 	
 **Student Interface**  
-The student will first see a page where they are prompted to enter their student ID. They will then be redirected to their own unique student page. The student will see all their quiz results and all their reflections. They are sorted so that the student can quickly see their most recent quiz results and reflections. The student will also have a button that they can press to take/retake the quiz. They will also have a button to submit a new reflection. Both buttons will redirect the students to corresponding pages. The take/retake quiz button will redirect them to a page where they will be able to take the quiz. The new reflection button will redirect them to a page where they will be able to write their reflection. See figures 1 and 2.
+The student will first see a page where they are prompted to enter their student ID. They will then be redirected to their own unique student page. The student can see all their quiz results and all their reflections. They are sorted so that the student can quickly see their most recent quiz results and reflections. The student has a button that they can press to take/retake the quiz. They also have a button to submit a new reflection for each quiz result. Both buttons will redirect the students to corresponding pages. The take/retake quiz button will redirect them to a page where they can take the quiz. The new reflection button will redirect them to a page where they can write a reflection. See figures 1 and 2.
 
 
 
@@ -22,6 +22,12 @@ The student will first see a page where they are prompted to enter their student
 
 * [Ruby 2.3+](https://www.ruby-lang.org/en/)
 * [Rails 5+](http://rubyonrails.org)
+
+## Gems
+
+* devise: We used the ruby gem devise to handle the admin data,collected through a form on the sign up page and later stored in the database with columns that are predefined by devise. 
+* bootstrap: We used the ruby gem bootstrap to design and improve our site visually.
+* figaro: We used the ruby gem figaro to store the admin invitation code.
 
 ## Run on localhost
 First you will need to clone the project and go into its directory.  
@@ -43,6 +49,14 @@ Open up the file, ```config/application.yml``` and create a key-value pair for i
 
 Now, to use the app, run ```rails server``` and navigate to localhost:3000 in your browser of choice.
 
+## Additional Admin Information
+### Admin Verification Code
+Currently there is one global code for all the admins.
+
+### Student Interactions
+Admins can add students to a course even if they did not create the student. They can add the student if they know their ID and name. 
+Deleting a student means removing them from the course, which means that the student still exists. This means a student can exist even if they have been deleted from all courses. The student can still be added to a course again, because there student data still exists.
+
 ## Architecture
 
 ### Admin Simplified
@@ -53,7 +67,8 @@ Now, to use the app, run ```rails server``` and navigate to localhost:3000 in yo
 | String  | email      |
 | String  | name       |
 
-We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handle the admin data. The admin data is collected through a form on the sign up page. The data is then stored in the database with columns that are predefined by devise. We added a name column to the database since it wasn't predefined by devise. An admin has many courses
+We used the ruby gem  [devise](https://github.com/plataformatec/devise) to handle the admin data. The admin data is collected through a form on the sign up page. The data is then stored in the database with columns that are predefined by devise. We added a name column to the database since it wasn't predefined by devise. We also have an invitation code for admin registration. We create a virtual attribute to the admin model via attr_accessor which is validated when an admin tries to register. We store the invitation code with the gem [Figaro](https://github.com/laserlemon/figaro). Figaro creates an application.yml file where the invitation is stored as a key-value pair (invitation_code: "our_code"). Figaro automatically adds application.yml to .gitignore, which ensures that the invitation code does not get pushed to GitHub.
+
 
 ### Course
 
@@ -76,7 +91,7 @@ The id is the key attribute for a course and it makes each course unique. The co
 | String  | name       |
 | String  | category   |
 
-The purpose of the student id is to make each student unique and should correspond to the student’s school id number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique id. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at id’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many courses through enrollment and has many quiz results.
+The purpose of the student_id is to make each student unique and should correspond to the student’s school ID number. We decided to make the student_id the primary key for students. This was under the assumption that our app will only be used by 5C students, who each have a unique ID. To extend our app to multiple schools, a simple change can be made to model such that there are no conflicts. The name for the student is for visual purposes. It helps the admin know who the students are instead of just looking at ID’s. The category allows the student and the admin know what kind of team player the student is, which is the purpose of the team player questionnaire. The student also has many courses through enrollment and has many quiz results.
 
 ### Enrollment
 
@@ -117,62 +132,83 @@ The id is the unique identifier of the each answer. The question is which questi
 
 ## Functionality
 
-### Overview
-Our application will have a student interface and an admin interface. In the student interface, students have the ability to take the Parker Team Player Style Survey and see their own results. The Parker Team Player Survey poses 18 questions on problems that may occur in a team setting and provides four possible approaches to which the student will rank the four possible answers from most applicable to least applicable. These scores are then totaled to return the team player category to which the student likely belongs: Communicator, Collaborator, Challenger, or Contributor. The results for a survey will have the students highest category and the score for each category. On each student’s dedicated page they can see all of their results, sorted by most recent, and write or view a corresponding reflection for each. In the admin interface, the admin will have the ability to view all the results from students in their different classes, and they will have the ability to export all the student data for a specific class in a csv file.
-
-The students will be organized into classes created by the admin. This allows the admin to view the students in a specific class. The students will not have the ability to create a class or put other students, including themselves, into a class. This feature will only be implemented in the admin interface. The class will have the names of the students that belong to the class. This allows the admin to access the data for all the students as each student name links to their overall quiz results page.
 ### Student Interface
 
 #### Student "Login"
 ![](images/Figure1.png)
-*Figure 1*
+<p align="center"> <i> Figure 1 </i> </p>
 
 ![](images/Figure2.png)
-*Figure 2*
+<p align="center"> <i> Figure 2 </i> </p>
 
-The student will first see a page where they are prompted to enter their student ID (Figure 7). They will then be redirected to their own unique student page. The student will see all their quiz results and all their reflections (Figure 8). They are sorted so that the student can quickly see their most recent quiz results and reflections.
+The student will first see a page where they are prompted to enter their student ID (Figure 1). They will then be redirected to their own unique student page where all their quiz results and all their reflections, sorted by most recent quiz results and reflections, is displayed (Figure 2). 
 #### Take/Retake Quiz
 ![](images/Figure3.png)
-*Figure 3*
+<p align="center"> <i> Figure 3 </i> </p>
 
-The student will also have a button that they can press to take/retake the quiz and it will redirect them to the quiz page (Figure 9). 
-#### Student Quiz Results
-![](images/Figure4.png)
-*Figure 4*
+The student will be able to take/retake the quiz with the "Take Quiz" button (Figure 2). It will redirect them to the quiz page (Figure 3). 
 
-The view results button will redirect them to a page with detailed results showing the question and how they ranked their answers within the categories (Figure 10).
 #### New Reflection
-They will also have a button to submit a new reflection. The new reflection button will redirect them to a page where they will be able to write their reflection.
+Under each quiz result there is a button, "Add Reflection," that allows students to submit a reflection. It redirects them to a page where they can write their reflection. After a reflection is submitted, the button changes to "Update Reflection" and allows students to edit their reflection.  
 
 ### Admin Interface
 
 #### Admin Login
-![](images/Figure5.png)
-*Figure 5*
+![](images/Figure4.png)
+<p align="center"> <i> Figure 4 </i> </p>
 
-The admin will login after creating an account with their email and password (Figure 1). They will then be redirected to the admin home page.
+After creating an account with an email and password and correct invitation code, the admin can then login to their account (Figure 1). From there, they will then be redirected to the admin home page. 
 #### Admin Homepage
+![](images/Figure5.png)
+<p align="center"> <i> Figure 5 </i> </p>
+
 ![](images/Figure6.png)
-*Figure 6*
 
-![](images/Figure7.png)
+<p align="center"> <i> Figure 6 </i> </p>
 
-*Figure 7*
-
-They will be able to click on a course and be redirected to that course page (Figure 2). New courses can be created with the “New Course” button found at the bottom of the list of admin courses. (Figure 3). 
+The admin home page displays a list of all the admin's courses. Clicking on a course name will redirect to the specific course page (Figure 5). New courses can be created with the “New Course” button found at the bottom of the list of admin courses (Figure 6). Existing courses can be edited with the "Edit" button.  
 #### Course Page
+![](images/Figure7.png)
+ <p align="center"> <i> Figure 7 </i> </p>
+
 ![](images/Figure8.png)
-*Figure 8*
 
-![](images/Figure9.png)
+<p align="center"> <i> Figure 8 </i> </p>
 
-*Figure 9*
+For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted below or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 
-For a specific course page, the admin will see a list of all the names of the students in the course (Figure 4). They will also be able to import new students with a csv file containing name and id of a student. The admin can also manually add new students to that class page one at a time (Figure 5)
+![](images/template.PNG)
+<p align="center"> <i> CSV Template </i> </p>
+
 #### Accessing Student Page
-The admin can click on a student and they will be redirected to the unique student page to view all the results for that student.
+The admin can click on a student where they will be redirected to the unique student page to view all the results and reflections for that student. It looks very similar to Figure 2 but instead of a Add Reflection button there is an View Results button.
+
+#### Detailed Quiz Results
+![](images/Figure9.png)
+<p align="center"> <i> Figure 9 </i> </p>
+The view results button will redirect the admin to a page with the summary of that quiz, detailed results of how each questions was asked, how they were ranked (Figure 9) and the reflection.
+
 #### Export Class Data
 ![](images/Figure10.png)
-*Figure 10*
+<p align="center"> <i> Figure 10 </i> </p>
 
-At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 6).
+At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 10).
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: ```git checkout -b my-new-feature```
+3. Commit your changes: ```git commit -am 'Add some feature'```
+4. Push to the branch: ```git push origin my-new-feature```
+5. Submit a pull request :D
+
+## Known Issues
+
+### Import Students
+* Importing students with an invalid file type will cause rails to display an error page.
+  - This can be solved by using javascript to check the file type before we try to import it.
+* Importing students with a csv that doesn't have the correct headers will cause rails to display an error page.
+  - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
+### Issues on Firefox
+* The javascript validation does not work for the quiz on Firefox
+
