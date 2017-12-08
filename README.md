@@ -203,10 +203,10 @@ At the bottom of a specific course page, under the list of students of that cour
 ## Known Issues
 
 ### Import Students
-    * Importing students with an invalid file type will cause rails to display an error page.
-        - This can be solved by using javascript to check the file type before we try to import it.
-    * Importing students with a csv that doesn't have the correct headers will cause rails to display an error page.
-        - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
-    * Issues on Firefox
-        - The javascript validation does not work for the quiz on Firefox
+* Importing students with an invalid file type will cause rails to display an error page.
+  - This can be solved by using javascript to check the file type before we try to import it.
+* Importing students with a csv that doesn't have the correct headers will cause rails to display an error page.
+  - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
+### Issues on Firefox
+* The javascript validation does not work for the quiz on Firefox
 
