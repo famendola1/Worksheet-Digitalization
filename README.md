@@ -177,7 +177,7 @@ The admin home page displays a list of all the admin's courses. Clicking on a co
 
 <p align="center"> <i> Figure 8 </i> </p>
 
-For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted in figure 9 or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
+For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted in figure 9 or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). For the student import, our app only looks at the second and third columns of the csv file for the necessary information to create a student. All other columns are ignored. The csv file must also incude a header as our app expects a csv file with a header. Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 
 ![](images/Figure9.png)
 <p align="center"> <i> Figure 9 </i> </p>
@@ -196,14 +196,6 @@ The view results button will redirect the admin to a page with the summary of th
 
 At the bottom of a specific course page, under the list of students of that course, an “Export” button allows the admin to export all the data for a specific class, including the quiz results of all the students in a class with the totaled up categories and the rankings for each question (Figure 11).
 
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: ```git checkout -b my-new-feature```
-3. Commit your changes: ```git commit -am 'Add some feature'```
-4. Push to the branch: ```git push origin my-new-feature```
-5. Submit a pull request :D
-
 ## Known Issues
 
 ### Import Students
@@ -213,4 +205,12 @@ At the bottom of a specific course page, under the list of students of that cour
   - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
 ### Issues on Firefox
 * The javascript validation does not work for the quiz on Firefox
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: ```git checkout -b my-new-feature```
+3. Commit your changes: ```git commit -am 'Add some feature'```
+4. Push to the branch: ```git push origin my-new-feature```
+5. Submit a pull request :D
 
