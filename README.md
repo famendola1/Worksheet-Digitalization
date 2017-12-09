@@ -204,8 +204,17 @@ At the bottom of a specific course page, under the list of students of that cour
 * Importing students with a csv that doesn't have the correct headers will cause rails to display an error page.
   - There is some validation for this type of problem (found in the import function student_model.rb) and we can expand on it to handle for the other cases.
 ### Issues on Firefox
-* The javascript validation does not work for the quiz on Firefox
+* The javascript validation does not work for the quiz on Firefox. Specifically, we get the error:
 
+    TypeError in QuizResultsController#create
+nil can't be coerced into Fixnum
+Extracted source (around line #8):
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; 6        offset = 0
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; 7        quiz_result.answers.order("question ASC").each do |a|
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; 8            counts[category[(0 + offset) % 4]] += a.responseA
+    <br />&nbsp;&nbsp;&nbsp;&nbsp; 9            counts[category[(1 + offset) % 4]] += a.responseB
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;10           counts[category[(2 + offset) % 4]] += a.responseC
+    <br />&nbsp;&nbsp;&nbsp;&nbsp;11           counts[category[(3 + offset) % 4]] += a.responseD
 ## Contributing
 
 1. Fork it!
