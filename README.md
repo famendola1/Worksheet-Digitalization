@@ -179,7 +179,7 @@ The admin home page displays a list of all the admin's courses. Clicking on a co
 
 For each specific course page, a list of all the names of the students in the course is displayed (Figure 7). The admin will be able to import new students with a csv file formatted as depicted in figure 9 or the admin can manually add new students to that class page with the "Add Student" button (Figure 8). Existing students can be edited with the "Edit" button or removed with the "Remove" button. Removing a student simply removes the student from that course but if re-added, all past information will still be available. All students are shared among admins. 
 
-![](images/Figure9.PNG)
+![](images/Figure9.png)
 <p align="center"> <i> Figure 9 </i> </p>
 
 #### Accessing Student Page
