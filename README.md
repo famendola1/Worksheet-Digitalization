@@ -37,8 +37,6 @@ First you will need to clone the project and go into its directory.
 
 Next, run the following commands:
 * ```bundle install```, installs the necessary Ruby gems if not installed
-* ```rake db:migrate```, migrates the most recent version of the database
-* ```rake assets:precompile```, precomiles javascript, stylesheets, etc.
 * ```bundle exec figaro install```, This creates a commented ```config/application.yml``` file and adds it to your ```.gitignore```
 
 Creating your invitation code:
@@ -46,6 +44,10 @@ Creating your invitation code:
 Open up the file, ```config/application.yml``` and create a key-value pair for invitation_code. 
 
 ```invitation_code: "your_invitation_code"```
+
+Finish up your installaion by running the following commands
+* ```rake db:migrate```, migrates the most recent version of the database
+* ```rake assets:precompile```, precomiles javascript, stylesheets, etc.
 
 Now, to use the app, run ```rails server``` and navigate to localhost:3000 in your browser of choice.
 
